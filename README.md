@@ -382,3 +382,27 @@ c- ewl -w wordlist -d 2 -m 5 www.certifiedhacker.com
 - -w wordlist file
 
 ---
+
+#### 5. WHOIS Footprinting
+
+whois protocol runs on port 43.Regional internet Registries keep records of all data
+
+WHOIS footprinting provides target domain information such as the owner, its registrar, registration details, name server, contact information, etc. Using this information, you can create a map of the organization’s network, perform social engineering attacks, and obtain internal details of the network.
+
+##### 5.1 WHOIS lookup using domain tools
+
+- https://whois.domaintools.com/
+
+<img width="898" height="476" alt="image" src="https://github.com/user-attachments/assets/840bf938-1efa-46c9-8a76-c79ed4f2fe69" />
+
+- This search result reveals the details associated with the URL entered, www.certifiedhacker.com, which includes organizational details such as registration details, name servers, IP address, location, etc.
+
+<img width="891" height="666" alt="image" src="https://github.com/user-attachments/assets/f587729b-9a48-415d-b284-53dabc89221a" />
+
+<img width="896" height="671" alt="image" src="https://github.com/user-attachments/assets/0941e055-505a-433b-86f2-9c6c7f98f1c5" />
+
+**Other WHOSI Footprinting tools**
+
+- https://www.sabsoft.com/
+
+---
