@@ -327,8 +327,6 @@ GitHub - s0md3v/Photon (https://github.com/s0md3v/Photon)
 
 - --wayback   searches archive.org
 
----
-
 ##### 4.3 Gather information about target with central ops
 
 - https://centralops.net/co/
