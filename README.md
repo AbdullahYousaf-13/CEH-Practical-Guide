@@ -242,7 +242,141 @@ Sherlock is a python-based tool that is used to gather information about a targe
 
 ---
 
-4. Website Footprinting
+#### 4. Website Footprinting
 
 Website footprinting is the process of gathering technical and organizational details about a target website (e.g., technologies, directories, emails, subdomains) to map its attack surface.
 
+##### 1. Gather information with Ping
+
+- ping certifiedhacker.com 
+
+- Returns the IP address, TTL and round trip time.
+
+**Finding maximum fragment size supported**
+
+- ping 162.241.216.11 -f -l 1500
+
+- -f do not fragment
+
+- -l specifies the size
+
+If you get an error like this it means the packet size is not supported.
+
+<img width="781" height="216" alt="image" src="https://github.com/user-attachments/assets/bd1c83da-bbc5-4e58-8efa-4fe3e35c8726" />
+
+Now try different sizes till the time we get hit and so we are able to find the maximum frame size supported on the machine.
+
+<img width="697" height="289" alt="image" src="https://github.com/user-attachments/assets/f587fb55-9d55-40a6-a8e1-2597ec9dcc0a" />
+
+**Finding hops with TTL**
+
+- Maximum hops supported are 255. -i flag sets TTL and -n flag tells the no of packets to be sent. Try different values of -i to get the number of hops.
+
+- ping 162.241.216.11 -i 14 -n 1
+
+<img width="680" height="418" alt="image" src="https://github.com/user-attachments/assets/43f583c4-a623-48c7-bb70-480bb9e5b9c7" />
+
+**Other tools**
+
+- Use tracert (windows) to find the number of hops
+
+- tracert 162.241.216.11
+
+<img width="876" height="406" alt="image" src="https://github.com/user-attachments/assets/6a8a5187-9207-4673-99dc-d5106688776d" />
+
+##### 4.2 Website footprinting with Photon
+
+Incredibly fast crawler designed for OSINT. 
+
+Photon can extract the following data while crawling:
+
+- URLs (in-scope & out-of-scope)
+
+- URLs with parameters (example.com/gallery.php?id=2)
+
+- Intel (emails, social media accounts, amazon buckets etc.)
+
+- Files (pdf, png, xml etc.)
+
+- Secret keys (auth/API keys & hashes)
+
+- JavaScript files & Endpoints present in them
+
+- Strings matching custom regex pattern
+
+- Subdomains & DNS related data
+
+Crawling can be resource intensive but Photon has some tricks up it's sleeves. You can fetch URLs archived by archive.org (https://archive.org/) to be used as seeds by using --wayback option.
+
+GitHub - s0md3v/Photon (https://github.com/s0md3v/Photon)
+
+- Incredibly fast crawler designed for OSINT.
+
+- python3 photon -u https://certifiedhacker.com
+
+- results are saved in directory in the photon folder
+
+**Extensive scan**
+
+- python3 photon -u https://certifiedhacker.com -l 3 -t 200 --wayback
+- -u  url
+
+- -l   scan levels
+
+- -t   No of threads
+
+- --wayback   searches archive.org
+
+---
+
+##### 4.3 Gather information about target with central ops
+
+- https://centralops.net/co/
+
+<img width="846" height="527" alt="image" src="https://github.com/user-attachments/assets/0b8e11bf-ad60-4b42-b200-1e465d80fd2c" />
+
+**Other tools**
+
+https://website.informer.com/
+
+##### 4.4 Getting Information with web data extractors
+
+Windows tool. Need to install
+
+- Web Data Extractor 8.3 - Extract URL, Meta Tag, Email, Phone, Fax from Web
+
+**Other tools**
+
+- https://www.parsehub.com/
+
+- https://www.kali.org/tools/spiderfoot/
+
+- https://github.com/smicallef/spiderfoot
+
+##### 4.5 Website Mirroring with HTTrack
+
+Windows tool need to install
+
+- https://www.httrack.com/
+
+**Other tools**
+
+- https://www.cyotek.com/cyotek-webcopy
+
+##### 4.6 Website recon with Grecon
+
+use google search for reconnaisance
+
+- https://github.com/TebbaaX/GRecon
+
+##### 4.7 Making wordlist with CEWL from website
+
+c- ewl -w wordlist -d 2 -m 5 www.certifiedhacker.com
+
+- -d depth
+
+- -m mimimum word length
+
+- -w wordlist file
+
+---
