@@ -53,13 +53,19 @@ After a past breach, an ethical hacker performs footprinting to uncover exposed 
 
 Extract target details (network, systems, employee info) using open-source tools.
 
-#### Ways to do Footprinting:
+**Certified Ethical Hacker (CEHv12) Practical hands on Labs**
 
-##### 1. Footprinting through Search Engines
+https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
+
+---
+
+### Ways to do Footprinting:
+
+#### 1. Footprinting through Search Engines
 
 Through the effective use of search engines, you can extract critical information about a target organization such as technology platforms, employee details, login pages, intranet portals etc
 
-  #### 1. Gather Information using Advanced Google Hacking Techniques
+- ##### 1.1 Gather Information using Advanced Google Hacking Techniques
   
   - intitle:login site:eccouncil.org 
   
@@ -93,25 +99,110 @@ Through the effective use of search engines, you can extract critical informatio
 
   <img width="897" height="494" alt="image" src="https://github.com/user-attachments/assets/ed3fb2c9-f09b-4b84-af19-7b53b3379ee1" />
   
-  **cache:** This operator allows you to view cached version of the web page. [cache:www.eccouncil.org]- Query returns the cached version of the website www.eccouncil.org
-  
-  **allinurl:** This operator restricts results to pages containing all the query terms specified in the URL. [allinurl: EC-Council career]—Query returns only pages containing the words “EC-Council” and “career” in the URL
-  
-  **inurl:** This operator restricts the results to pages containing the word specified in the URL [inurl: copy site:www.eccouncil.org]—Query returns only pages in EC-Council site in which the URL has the word “copy”
-  
-  **allintitle:** This operator restricts results to pages containing all the query terms specified in the title. [allintitle: detect malware]—Query returns only pages containing the words “detect” and “malware” in the title
-  
-  **inanchor:** This operator restricts results to pages containing the query terms specified in the anchor text on links to the page. [Anti-virus inanchor:Norton]—Query returns only pages with anchor text on links to the pages containing the word “Norton” and the page containing the word “Anti-virus”
-  
-  **allinanchor:** This operator restricts results to pages containing all query terms specified in the anchor text on links to the page. [allinanchor: best cloud service provider]—Query returns only pages in which the anchor text on links to the pages contain the words “best,” “cloud,” “service,” and “provider”
-  
-  **link:** This operator searches websites or pages that contain links to the specified website or page. [link:www.eccouncil.org]—Finds pages that point to EC-Council’s home page
-  
-  **related:** This operator displays websites that are similar or related to the URL specified. [related:www.eccouncil.org]—Query provides the Google search engine results page with websites similar to eccouncil.org
-  
-  **info:** This operator finds information for the specified web page. [info:eccouncil.org]—Query provides information about the www.eccouncil.org home page
-  
-  **location:** This operator finds information for a specific location. [location: EC-Council]—Query give you results based around the term EC-Council
-  
-  https://www.exploit-db.com/google-hacking-database
+  **Google Dorking Cheatsheet:** https://www.exploit-db.com/google-hacking-database
 
+##### 1.2 Gather Information from Video Search Engines
+
+**Youtube metadata:** 
+
+- https://mattw.io/youtube-metadata/
+
+**Other similar sites:** 
+
+- https://www.google.com/videohp?hl=en
+
+- https://video.search.yahoo.com/
+
+- https://www.videoreverser.com/
+
+##### 1.3 Reverse Image Search
+
+- https://tineye.com/
+
+##### 1.4 FTP search
+
+- https://www.searchftps.net/
+
+- https://www.freewareweb.com/ftpsearch.shtml
+
+##### 1.5 IOT search Engine
+
+- https://www.shodan.io/
+
+- https://search.censys.io/
+
+---
+
+#### 2. Perform Footprinting Through Internet Research Services
+
+As a professional ethical hacker or pen tester, you should be able to extract a variety of information about your target organization from Internet research services.
+
+##### 2.1 Find the Company’s Domains, Subdomains and Hosts using Netcraft and DNSdumpster
+
+Domains and sub-domains are part of critical network infrastructure for any organization. A company's top-level domains (TLDs) and subdomains can provide much useful information such as organizational history, services and products, and contact information. A public website is designed to show the presence of an organization on the Internet, and is available for free access.
+
+**Visit the Netcraft Website**
+
+- https://www.netcraft.com/
+
+- Click on menu icon from the top-right corner of the page and navigate to the Resources -> Research Tools.
+
+- In the Tools | Netcraft page, click on Site Report option.
+
+**Visit the DNS Dumpster Website**
+
+- https://dnsdumpster.com/
+
+- Open a new tab in Firefox browser and go to site link.
+
+- Search for any target website in the search box.
+
+**Other tools:**
+
+-sublis3ter
+
+- pentest-tools
+
+- FFUF
+
+- Gobuster
+
+- Dirb
+
+##### 2.2 People search
+
+- https://www.peekyou.com/
+
+- https://pipl.com/
+
+- https://www.intelius.com/
+
+- https://www.beenverified.com/
+
+##### 2.3 Emails Using theHarvester
+ 
+- theHarvester -d microsoft.com -l 200 -b baidu
+
+- -d domains
+
+- -l limit results
+
+- -b source (baidu,google,etc)
+
+##### 2.4 Dark and Deep web searching
+
+- https://www.torproject.org/download/
+
+- Tor uses duckduckgo for search
+
+- hidden wiki
+
+##### 2.5 OS footprinting with Censys
+
+- You can search the site through censys search and get the OS of the system.
+
+- https://search.censys.io/
+
+- https://www.shodan.io/
+
+---
