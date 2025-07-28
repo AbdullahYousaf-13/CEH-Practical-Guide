@@ -206,3 +206,42 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 - https://www.shodan.io/
 
 ---
+
+#### 3. Footprinting through Social Networking sites
+
+By footprinting through social networking sites, you can extract personal information such as name, position, organization name, current location, and educational qualifications.
+
+##### 3.1 Finding employees through Harvester
+
+- theHarvester -d microsoft -l 200 -b linkedin
+
+##### 3.2 Gather Personal Information from Various Social Networking Sites using Sherlock
+
+Sherlock is a python-based tool that is used to gather information about a target person over various social networking sites. Sherlock searches a vast number of social networking sites for a given target user, locates the person, and displays the results along with the complete URL related to the target person.
+
+- https://github.com/sherlock-project/sherlock
+
+- python3 sherlock.py user123
+
+**Other tools**
+
+- https://www.social-searcher.com/
+
+- https://github.com/issamelferkh/userrecon
+
+##### 3.3 Gather information with followerwank
+
+- It provides info about activity, followers, topics etc
+
+- https://followerwonk.com/analyze
+
+**Other tools**
+
+- https://www.hootsuite.com/
+
+---
+
+4. Website Footprinting
+
+Website footprinting is the process of gathering technical and organizational details about a target website (e.g., technologies, directories, emails, subdomains) to map its attack surface.
+
