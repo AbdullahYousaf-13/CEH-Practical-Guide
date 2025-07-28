@@ -4,10 +4,6 @@
 
 <img width="890" height="363" alt="image" src="https://github.com/user-attachments/assets/bf888202-0b87-4143-a09e-f1b37d37c7e9" />
 
-**YouTube Playlist**
-
-https://www.youtube.com/watch?v=yFC8pb2TPdc&list=PLIhvC56v63IIJZRa3lzK6IeBQOH_VFjUQ&index=2&ab_channel=NetworkChuck
-
 ---
 ---
 
@@ -26,6 +22,10 @@ Welcome to your ultimate guide to passing the Certified Ethical Hacker (CEH) Pra
 https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
 
 The course provides step-by-step instructions to set up your own hacking lab for practicing labs for CEH. You will also be presented with hands-on challenges on free platforms like Try hack me and Hack the Box that will solidify your hacking skills.
+
+### YouTube Playlist
+
+https://www.youtube.com/watch?v=yFC8pb2TPdc&list=PLIhvC56v63IIJZRa3lzK6IeBQOH_VFjUQ&index=2&ab_channel=NetworkChuck
 
 ---
 ---
