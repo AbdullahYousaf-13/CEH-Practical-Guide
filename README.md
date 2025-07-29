@@ -406,3 +406,7 @@ WHOIS footprinting provides target domain information such as the owner, its reg
 - https://www.sabsoft.com/
 
 ---
+
+#### 6. DNS Footprinting
+
+You need to perform DNS footprinting to gather information about DNS servers, DNS records, and types of servers used by the target organization. DNS zone data etc.
