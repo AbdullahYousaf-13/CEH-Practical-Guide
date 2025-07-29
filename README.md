@@ -504,3 +504,61 @@ The route is the path that the network packet traverses between the source and d
 - You can also use other traceroute tools such as PingPlotter (https://www.pingplotter.com/), Traceroute NG (https://www.solarwinds.com), etc. to extract additional network information of the target organization.
 
 ---
+
+#### 8. Email Footprinting
+
+Email tracking allows you to collect information such as IP addresses, mail servers, OS details, geolocation, information about service providers involved in sending the mail etc.
+
+##### 8.1 Gather Information about a Target by Tracing Emails using eMailTrackerPro
+
+Windows tool to analyze headers also provide other options like when email was opened by recipient.
+
+- https://emailtracker.website/pro
+
+* To trace email headers, click the My Trace Reports icon from the View section. (here, you will see the output report of the traced email header).
+
+* Click the Trace Headers icon from the New Email Trace section to start the trace.
+
+
+Screenshot
+A pop-up window will appear; select Trace an email I have received. Copy the email header from the suspicious email you wish to trace and paste it in the Email headers: field under Enter Details section.
+
+
+Screenshot
+For finding email headers, open any web browser and log in to any email account of your choice; from the email inbox, open the message you would like to view headers for.
+
+In Gmail, find the email header by following the steps:
+
+Open an email; click the dots (More) icon arrow next to the Reply icon at the top-right corner of the message pane.
+
+Select Show original from the list.
+
+The Original Message window appears in a new browser tab with all the details about the email, including the email header
+
+
+st10.jpg
+In Outlook, find the email header by following the steps:
+
+Double-click the email to open it in a new window
+
+Click the … (More actions) icon present at the right of the message-pane to open message options
+
+From the options, click View
+
+The view message source window appears with all the details about the email, including the email header
+
+
+mail2.jpg
+Copy the entire email header text and paste it into the Email headers: field of eMailTrackerPro, and click Trace.
+
+Here, we are analyzing the email header from gmail account. However, you can also analyze the email header from outlook account.
+
+
+mail3.jpg
+The My Trace Reports window opens.
+
+The email location will be traced in a Map (world map GUI). You can also view the summary by selecting Email Summary on the right-hand side of the window. The Table section right below the Map shows the entire hop in the route, with the IP and suspected locations for each hop.
+
+
+13.jpg
+To examine the Network Whois data, click the Network Whois button below Email Summary to view the Network Whois data.
