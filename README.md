@@ -511,54 +511,49 @@ Email tracking allows you to collect information such as IP addresses, mail serv
 
 ##### 8.1 Gather Information about a Target by Tracing Emails using eMailTrackerPro
 
-Windows tool to analyze headers also provide other options like when email was opened by recipient.
+Windows tool to analyze headers also provide other options like when email was opened by recipient. 
 
-- https://emailtracker.website/pro
+https://emailtracker.website/pro
 
-* To trace email headers, click the My Trace Reports icon from the View section. (here, you will see the output report of the traced email header).
+1. To trace email headers, click the My Trace Reports icon from the View section. (here, you will see the output report of the traced email header).
 
-* Click the Trace Headers icon from the New Email Trace section to start the trace.
+2. Click the Trace Headers icon from the New Email Trace section to start the trace.
 
+<img width="855" height="645" alt="image" src="https://github.com/user-attachments/assets/2287a942-9383-4080-bc58-db123bd5cb50" />
 
-Screenshot
-A pop-up window will appear; select Trace an email I have received. Copy the email header from the suspicious email you wish to trace and paste it in the Email headers: field under Enter Details section.
+3. A pop-up window will appear; select Trace an email I have received. Copy the email header from the suspicious email you wish to trace and paste it in the Email headers: field under Enter Details section.
 
+<img width="859" height="606" alt="image" src="https://github.com/user-attachments/assets/5eb9c058-0a0d-4b71-b694-b95649f28140" />
 
-Screenshot
-For finding email headers, open any web browser and log in to any email account of your choice; from the email inbox, open the message you would like to view headers for.
+4. For finding email headers, open any web browser and log in to any email account of your choice; from the email inbox, open the message you would like to view headers for.
 
-In Gmail, find the email header by following the steps:
+<img width="827" height="295" alt="image" src="https://github.com/user-attachments/assets/0fa91112-9249-4467-98a1-1574a1286988" />
 
-Open an email; click the dots (More) icon arrow next to the Reply icon at the top-right corner of the message pane.
+<img width="849" height="425" alt="image" src="https://github.com/user-attachments/assets/366e2a8d-516f-486b-91c6-78b7f0329de4" />
 
-Select Show original from the list.
+<img width="852" height="185" alt="image" src="https://github.com/user-attachments/assets/8efb9d8d-0dee-4696-9d78-a0dd2c05109f" />
 
-The Original Message window appears in a new browser tab with all the details about the email, including the email header
+<img width="843" height="329" alt="image" src="https://github.com/user-attachments/assets/4062f7cb-8259-4fa5-96fa-934cc552b119" />
 
+<img width="852" height="633" alt="image" src="https://github.com/user-attachments/assets/093ddbf9-237c-4e1f-89c4-c8bd48855852" />
 
-st10.jpg
-In Outlook, find the email header by following the steps:
+5. Copy the entire email header text and paste it into the Email headers: field of eMailTrackerPro, and click Trace.
 
-Double-click the email to open it in a new window
+<img width="804" height="97" alt="image" src="https://github.com/user-attachments/assets/122578c4-5479-48c4-8900-561b1fa63c48" />
 
-Click the … (More actions) icon present at the right of the message-pane to open message options
+<img width="855" height="640" alt="image" src="https://github.com/user-attachments/assets/20a6d709-f921-4c71-a797-588ce6f751c5" />
 
-From the options, click View
+6. The My Trace Reports window opens.
 
-The view message source window appears with all the details about the email, including the email header
+7. The email location will be traced in a Map (world map GUI). You can also view the summary by selecting Email Summary on the right-hand side of the window. The Table section right below the Map shows the entire hop in the route, with the IP and suspected locations for each hop.
 
+<img width="855" height="637" alt="image" src="https://github.com/user-attachments/assets/527b5546-c115-4bf3-8918-b4c999ba7221" />
 
-mail2.jpg
-Copy the entire email header text and paste it into the Email headers: field of eMailTrackerPro, and click Trace.
+8. To examine the Network Whois data, click the Network Whois button below Email Summary to view the Network Whois data.
 
-Here, we are analyzing the email header from gmail account. However, you can also analyze the email header from outlook account.
+<img width="859" height="645" alt="image" src="https://github.com/user-attachments/assets/d0085ac5-83ae-4a29-a572-1346079c5a3d" />
 
-
-mail3.jpg
-The My Trace Reports window opens.
-
-The email location will be traced in a Map (world map GUI). You can also view the summary by selecting Email Summary on the right-hand side of the window. The Table section right below the Map shows the entire hop in the route, with the IP and suspected locations for each hop.
+---
 
 
-13.jpg
-To examine the Network Whois data, click the Network Whois button below Email Summary to view the Network Whois data.
+
