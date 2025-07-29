@@ -553,7 +553,138 @@ https://emailtracker.website/pro
 
 <img width="859" height="645" alt="image" src="https://github.com/user-attachments/assets/d0085ac5-83ae-4a29-a572-1346079c5a3d" />
 
+**Track an email or a message**
+
+- https://grabify.link/
+
+Whenever someone clicks the link, we get the data about the target.
+
+**Track your email and know when it gets opened**
+
+- https://mailtrack.io/en/
+
+**Other Email Tracking tools**
+
+- https://github.com/m4ll0k/Infoga
+
+- https://mxtoolbox.com/
+
+- https://socialcatfish.com/
+
+- https://www.ip2location.com/
+
 ---
 
 
+#### 9. Footprinting using footprinting tools
+
+Footprinting tools are used to collect basic information about the target systems in order to exploit them.
+
+##### 9.1 Footprinting with Recon-ng
+
+Start the tool
+
+- recon-ng
+
+Install all the modules
+
+- marketplace install all
+
+List all modules
+
+- modules search
+
+Now create a workspace and select it
+
+- workspaces create CEH
+
+- workspaces select CEH
+
+<img width="763" height="211" alt="image" src="https://github.com/user-attachments/assets/4c94e33d-922b-4875-bf94-32d50643cc58" />
+
+- workspaces list //if you want to see the list of workspaces
+
+Add a website to the recon list
+
+- db insert domains
+
+- show domains // to list the domains
+
+<img width="812" height="244" alt="image" src="https://github.com/user-attachments/assets/ddc768cd-6cdc-437b-8abc-1b1f22ab094d" />
+
+Load the module for brute forcing hosts
+
+- modules load recon/domains-hosts/brute_hosts
+
+Now  run it with run command
+
+- run
+
+You can view the hosts with the following command
+
+- show hosts
+
+Now to resolve the host with bing
+
+- back
+
+- modules load recon/domains-hosts/bing_domain_web
+
+- run
+
+Now reverse lookup
+
+- back
+
+- modules load recon/netblocks-hosts/reverse_resolve
+
+Create a report
+
+- modules load reporting/html
+
+- options set CREATOR ammar
+
+- options set CUSTOMER ceh
+
+**Whois with Recon-ng**
+
+create a new workspace
+
+- workspaces create whois
+
+- workspaces select whois
+
+Now select the whois module
+
+- modules load recon/domains-contacts/whois_pocs
+
+Set the website as target
+
+- options set source SOURCE google.com
+
+**Check the names and usernames on social media**
+
+- modules load recon/profiles-profiles/namechk
+
+- options set SOURCE ammar
+
+**Checking profiles on social media (very good results)**
+
+- modules load profiler
+
+- options set SOURCE ammar
+
+- run
+
+**Getting subdomains and other info about the target (Most important)**
+
+- modules load hackertarget
+
+- options set SOURCE certifiedhacker.com
+
+- run
+
+<img width="588" height="558" alt="image" src="https://github.com/user-attachments/assets/5e0d591e-af8a-4007-af1f-776a9e478066" />
+
+---
 
