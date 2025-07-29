@@ -688,3 +688,37 @@ Set the website as target
 
 ---
 
+#### 10. Perform Footprinting using AI
+
+Footprinting using AI accelerates the reconnaissance process by automating data collection and analysis, allowing security professionals to uncover vulnerabilities more efficiently.
+
+##### 10.1 Footprinting a Target using ShellGPT
+
+To use ShellGPT for harvesting emails pertaining to a target organization. To do so, run
+
+- sgpt --chat footprint --shell “Use theHarvester to gather email accounts associated with 'microsoft.com', limiting results to 200, and leveraging 'baidu' as a data source”
+
+<img width="897" height="672" alt="image" src="https://github.com/user-attachments/assets/7640e775-9941-4a0e-8f33-7aa739b7e5f6" />
+
+To perform footprinting through social networking sites using ShellGPT, to do so run
+
+- sgpt --chat footprint --shell “Use Sherlock to gather personal information about 'Sundar Pichai' and save the result in recon2.txt”
+
+<img width="896" height="633" alt="image" src="https://github.com/user-attachments/assets/a703f436-d368-4ade-ad2c-76bd41d69f50" />
+
+Tp perform DNS lookup using ShellGPT, to do so, run
+
+- sgpt --chat footprint --shell “Install and use DNSRecon to perform DNS enumeration on the target domain www.certifiedhacker.com”
+
+For tracerouting.
+
+- sgpt --chat footprint --shell “Perform network tracerouting to discover the routers on the path to a target host www.certifiedhacker.com”
+
+To automate footprinting tasks.
+
+- sgpt --chat footprint --shell “Develop a Python script which will accept domain name microsoft.com as input and execute a series of website footprinting commands, including DNS lookups, WHOIS records retrieval, email enumeration, and more to gather information about the target domain”
+
+<img width="901" height="676" alt="image" src="https://github.com/user-attachments/assets/02fd1eec-13e5-4cd4-9872-ccb144b0a3e4" />
+
+---
+---
