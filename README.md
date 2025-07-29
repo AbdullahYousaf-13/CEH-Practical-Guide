@@ -250,7 +250,7 @@ Sherlock is a python-based tool that is used to gather information about a targe
 
 Website footprinting is the process of gathering technical and organizational details about a target website (e.g., technologies, directories, emails, subdomains) to map its attack surface.
 
-##### 1. Gather information with Ping
+##### 4.1 Gather information with Ping
 
 - ping certifiedhacker.com 
 
@@ -410,3 +410,97 @@ WHOIS footprinting provides target domain information such as the owner, its reg
 #### 6. DNS Footprinting
 
 You need to perform DNS footprinting to gather information about DNS servers, DNS records, and types of servers used by the target organization. DNS zone data etc.
+
+##### 6.1 Gather DNS Information using nslookup Command Line Utility and Online Tool
+
+**Command line in Windows**
+
+- nslookup // Enter interactive mode
+
+Now to search for any records, set the type
+  
+- set type=a
+
+- set type=cname  //cname record are always from authoritative server
+
+Now enter the website name to get the records
+
+- www.certifiedhacker.com
+
+<img width="754" height="686" alt="image" src="https://github.com/user-attachments/assets/ca098da4-27f0-404f-a49e-d0e03ccd6085" />
+
+**Online nslookup**
+
+- http://www.kloth.net/services/nslookup.php
+
+<img width="902" height="590" alt="image" src="https://github.com/user-attachments/assets/a1185396-a50d-4302-8312-7069974e59ec" />
+
+##### 6.2 Reverse DNS
+
+- https://www.yougetsignal.com/
+
+**DNSRECON**
+
+Install dnsrecon (used for DNS Brute forcing)
+
+- sudo apt install dnsrecon
+
+- ./dnsrecon.py -r <startIP-endIP>
+
+##### 6.3 Subdomains and DNS using security trails
+
+- https://securitytrails.com/
+
+<img width="890" height="400" alt="image" src="https://github.com/user-attachments/assets/3f7b10a0-95e6-4b20-b565-d7732db5edb4" />
+
+**Other tools**
+
+- https://dnschecker.org/
+
+- https://dnsdumpster.com/
+
+<img width="899" height="287" alt="image" src="https://github.com/user-attachments/assets/adaba0ce-49a2-44c4-845d-c369d0e479ba" />
+
+##### 6.4 DNS Cache on Windows
+
+<img width="723" height="679" alt="image" src="https://github.com/user-attachments/assets/682d6445-01fe-4e1c-ab97-e7b9c23a7aab" />
+
+---
+
+#### 7. Network footprinting
+
+Network footprinting is carried out to gather the network-related information of a target organization such as network range, traceroute, TTL values, etc
+
+##### 7.1 Locate Network Range
+
+**visit the website**
+
+- https://www.arin.net/
+
+<img width="818" height="476" alt="image" src="https://github.com/user-attachments/assets/5ca8f811-074c-46c5-bb6a-41b53a3c7602" />
+
+##### 7.2 Perform Network Tracerouting in Windows and Linux Machines
+
+The route is the path that the network packet traverses between the source and destination. Network tracerouting is a process of identifying the path and hosts lying between the source and destination.
+
+- tracert certifiedhacker.com
+
+<img width="879" height="463" alt="image" src="https://github.com/user-attachments/assets/66b7dc95-611e-4d95-a00d-34f989ef2a3f" />
+
+- Run tracert /? command to view the different options for the command, as shown in the screenshot.
+
+<img width="676" height="626" alt="image" src="https://github.com/user-attachments/assets/f7a803c2-7a55-4da4-8fe7-4b62262cddc2" />
+
+- Run tracert -h 5 www.certifiedhacker.com command to perform the trace, but with only 5 maximum hops allowed.
+
+- Maximum five hops.
+
+<img width="862" height="334" alt="image" src="https://github.com/user-attachments/assets/1b7308fc-35b1-430c-a4cd-28d979348498" />
+
+##### 7.3 Advanced Network tracing with path analyzer pro
+
+- https://path-analyzer-pro.software.informer.com/2.7/
+
+- You can also use other traceroute tools such as PingPlotter (https://www.pingplotter.com/), Traceroute NG (https://www.solarwinds.com), etc. to extract additional network information of the target organization.
+
+---
