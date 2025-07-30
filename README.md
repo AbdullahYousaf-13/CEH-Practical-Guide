@@ -706,7 +706,7 @@ To perform footprinting through social networking sites using ShellGPT, to do so
 
 <img width="896" height="633" alt="image" src="https://github.com/user-attachments/assets/a703f436-d368-4ade-ad2c-76bd41d69f50" />
 
-Tp perform DNS lookup using ShellGPT, to do so, run
+To perform DNS lookup using ShellGPT, to do so, run
 
 - sgpt --chat footprint --shell “Install and use DNSRecon to perform DNS enumeration on the target domain www.certifiedhacker.com”
 
@@ -721,4 +721,36 @@ To automate footprinting tasks.
 <img width="901" height="676" alt="image" src="https://github.com/user-attachments/assets/02fd1eec-13e5-4cd4-9872-ccb144b0a3e4" />
 
 ---
+---
+
+## Module 3
+
+### Scanning Networks
+
+Scanning itself is not the actual intrusion, but an extended form of reconnaissance in which the ethical hacker and pen tester learns more about the target. 
+
+- The information gleaned from this reconnaissance helps you to select strategies for the attack on the target system or network.
+
+- In the process of scanning, you attempt to gather information, including the specific IP addresses of the target system that can be accessed over the network (live hosts), open ports, and respective services running on the open ports and vulnerabilities in the live hosts.
+
+- Port scanning will help you identify open ports and services running on specific ports, which involves connecting to Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) system ports. Port scanning is also used to discover the vulnerabilities in the services running on a port.
+
+**Mastering Nmap for Beginners:** A Comprehensive Guide to Network Scanning Techniques
+
+- https://youtu.be/SrqN8Q5Dp6k
+
+**Objective**
+
+The objective of this lab is to conduct network scanning, port scanning, analyzing the network vulnerabilities, etc.
+
+Network scans are needed to:
+
+- Check live systems and open ports
+
+- Identify services running in live systems
+
+- Perform banner grabbing/OS fingerprinting
+
+- Identify network vulnerabilities
+
 ---
