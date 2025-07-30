@@ -735,6 +735,18 @@ Scanning itself is not the actual intrusion, but an extended form of reconnaissa
 
 - Port scanning will help you identify open ports and services running on specific ports, which involves connecting to Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) system ports. Port scanning is also used to discover the vulnerabilities in the services running on a port.
 
+- Port States:
+
+<img width="822" height="322" alt="image" src="https://github.com/user-attachments/assets/56804337-0d81-48c0-95ce-5a703da11a60" />
+
+- Nmap Scans:
+
+<img width="1842" height="1044" alt="image" src="https://github.com/user-attachments/assets/d2a3de9e-40f7-4d01-af73-de297ab611de" />
+
+<img width="891" height="484" alt="image" src="https://github.com/user-attachments/assets/c0cc2be6-dc99-426d-8610-35513c439162" />
+
+<img width="897" height="480" alt="image" src="https://github.com/user-attachments/assets/c700baeb-752b-4255-b63f-27c33accb6d3" />
+
 **Mastering Nmap for Beginners:** A Comprehensive Guide to Network Scanning Techniques
 
 - https://youtu.be/SrqN8Q5Dp6k
