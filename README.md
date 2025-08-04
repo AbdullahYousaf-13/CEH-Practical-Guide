@@ -5,6 +5,27 @@
 <img width="890" height="363" alt="image" src="https://github.com/user-attachments/assets/bf888202-0b87-4143-a09e-f1b37d37c7e9" />
 
 ---
+
+## IMP Links:
+
+- **YouTube Playlist:**
+
+  https://www.youtube.com/watch?v=yFC8pb2TPdc&list=PLIhvC56v63IIJZRa3lzK6IeBQOH_VFjUQ&index=2&ab_channel=NetworkChuck
+
+- **Recommended Course:**
+
+  https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
+
+- **Certified Ethical Hacker (CEHv12) Practical hands on Labs**
+
+  https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
+
+- **Nmap Cheet Sheet:**
+
+  https://www.stationx.net/nmap-cheat-sheet/
+  
+
+---
 ---
 
 ## Module 1
@@ -17,15 +38,8 @@ Discover comprehensive resources and expert tips to pass the Certified Ethical H
 
 Welcome to your ultimate guide to passing the Certified Ethical Hacker (CEH) Practical exam. This resource provides all the tools, techniques, procedures, and notes you need for your CEH preparation.
 
-### Recommended Course
-
-https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
-
 The course provides step-by-step instructions to set up your own hacking lab for practicing labs for CEH. You will also be presented with hands-on challenges on free platforms like Try hack me and Hack the Box that will solidify your hacking skills.
 
-### YouTube Playlist
-
-https://www.youtube.com/watch?v=yFC8pb2TPdc&list=PLIhvC56v63IIJZRa3lzK6IeBQOH_VFjUQ&index=2&ab_channel=NetworkChuck
 
 ---
 ---
@@ -57,10 +71,6 @@ After a past breach, an ethical hacker performs footprinting to uncover exposed 
 **Lab Goal:**
 
 Extract target details (network, systems, employee info) using open-source tools.
-
-**Certified Ethical Hacker (CEHv12) Practical hands on Labs**
-
-https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
 
 ---
 
@@ -793,17 +803,17 @@ These exercises are as per the modules. better tools are
 
 <img width="513" height="141" alt="{DE78F742-FBBF-4530-A92E-F4529BC80629}" src="https://github.com/user-attachments/assets/1272789c-d2f9-4069-9657-d38f947a16ad" />
 
-- nmap -sn -PU 10.0.2.2   //UDP ping scan
+- nmap -sn -PU 10.0.2.2  //UDP ping scan
 
-- nmap -sn -PE 192.168.18.1-255   //ICMP Echo scan
+- nmap -sn -PE 192.168.18.1-255  //ICMP Echo scan
 
-- nmap -sn -PM 192.168.18.1-255    //Mask Ping scan (use if ICMP is blocked)
+- nmap -sn -PM 192.168.18.1-255  //Mask Ping scan (use if ICMP is blocked)
 
-- nmap -sn -PP 192.168.18.1-255    //ICMP timestamp scan
+- nmap -sn -PP 192.168.18.1-255  //ICMP timestamp scan
 
-- nmap -sn -PS 192.168.18.1-255    //tcp syn ping scan
+- nmap -sn -PS 192.168.18.1-255  //tcp syn ping scan
 
-- nmap -sn -PO 192.168.18.1-255     //IP protocol scan.use different protocols to test the connectivity
+- nmap -sn -PO 192.168.18.1-255   //IP protocol scan.use different protocols to test the connectivity
 
 
 **ICMP Address Mask Ping Scan:** 
@@ -832,7 +842,30 @@ This technique sends different probe packets of different IP protocols to the ta
 
 ---
 
-#### 2. Port and Service Discovery\
+#### 2. Port and Service Discovery
 
-The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses
+The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses (nmap -sT -v 192.168.18.110)
 
+- -v  Verbose scan lists all hosts and ports in the  result
+
+- -sS stealth scan
+
+- -sU UDP scan
+
+- -sX xmass scan
+
+- -sM Maimon scan (FIN/ACK)
+
+- -sA Ack scan (no response it is filtered and RST means not filtered.
+
+- -sN Null scan
+
+- -T4 Aggressive
+
+- -A all advanced and aggressive scan
+
+- -sV Detects person
+
+- -sC script scanning
+
+#####
