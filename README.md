@@ -6,7 +6,7 @@
 
 ---
 
-## IMP Links:
+## Important Links:
 
 - **YouTube Playlist:**
 
@@ -844,7 +844,25 @@ This technique sends different probe packets of different IP protocols to the ta
 
 #### 2. Port and Service Discovery
 
-The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses (nmap -sT -v 192.168.18.110)
+The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses
+
+---
+
+##### 2.1 Megaping (on windows)
+
+---
+
+##### 2.2 NetscanToolsPro(on windows)
+
+---
+
+##### 2.3 Sxtool (Linux)
+
+---
+
+2.4 Explore Various Network Scanning Techniques using Nmap
+
+nmap -sT -v 192.168.18.110
 
 - -v  Verbose scan lists all hosts and ports in the  result
 
@@ -868,4 +886,14 @@ The next step after discovering active hosts in the target network is to scan fo
 
 - -sC script scanning
 
-#####
+Use Zenmap and get used to it
+
+---
+
+##### 2.5 HPING
+
+Ack scan no response means port is filtered. RST means closed
+
+- hping3 -A -P 80 -C 5 192.168.18.110
+
+- hping3 -S 192.168.149.1 -p 80
