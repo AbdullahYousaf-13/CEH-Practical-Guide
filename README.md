@@ -766,3 +766,73 @@ Network scans are needed to:
 - Identify network vulnerabilities
 
 ---
+
+#### 1. Host Discovery
+
+These exercises are as per the modules. better tools are
+
+- arpscan
+
+- netdiscover
+
+##### 1.1 Netdiscover
+
+- netdiscover -i (network interface name) (example: eth0 or tun0)
+
+- netdiscover -i eth0
+
+- netdiscover -r 10.10.10.0/24
+
+##### 1.2 Host discovery using nmap
+
+- nmap -sn -PR 10.0.2.2
+
+- -sn disables port scan
+
+- -PR arp scan. sends ARP probes
+
+<img width="513" height="141" alt="{DE78F742-FBBF-4530-A92E-F4529BC80629}" src="https://github.com/user-attachments/assets/1272789c-d2f9-4069-9657-d38f947a16ad" />
+
+- nmap -sn -PU 10.0.2.2   //UDP ping scan
+
+- nmap -sn -PE 192.168.18.1-255   //ICMP Echo scan
+
+- nmap -sn -PM 192.168.18.1-255    //Mask Ping scan (use if ICMP is blocked)
+
+- nmap -sn -PP 192.168.18.1-255    //ICMP timestamp scan
+
+- nmap -sn -PS 192.168.18.1-255    //tcp syn ping scan
+
+- nmap -sn -PO 192.168.18.1-255     //IP protocol scan.use different protocols to test the connectivity
+
+
+**ICMP Address Mask Ping Scan:** 
+
+This technique is an alternative for the traditional ICMP ECHO ping scan, which are used to determine whether the target host is live specifically when administrators block the ICMP ECHO pings.
+
+- nmap -sn -PM [target IP address]
+
+**TCP SYN Ping Scan:**
+
+This technique sends empty TCP SYN packets to the target host, ACK response means that the host is active.
+
+- nmap -sn -PS [target IP address]
+
+**TCP ACK Ping Scan:**
+
+This technique sends empty TCP ACK packets to the target host; an RST response means that the host is active.
+
+- nmap -sn -PA [target IP address]
+
+**IP Protocol Ping Scan:**
+
+This technique sends different probe packets of different IP protocols to the target host, any response from any probe indicates that a host is active.
+
+- nmap -sn -PO [target IP address]
+
+---
+
+#### 2. Port and Service Discovery\
+
+The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses
+
