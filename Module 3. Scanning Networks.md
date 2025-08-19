@@ -203,3 +203,68 @@ https://www.kali.org/tools/unicornscan/
 
 ---
 
+### 4. Scan beyond Firewalls and IDS
+
+IDSs and firewalls are efficient security mechanisms; however, they still have some security limitations. You may be required to launch attacks to exploit these limitations using various IDS/firewall
+
+#### Techniques to evade IDS/firewall
+
+**Packet Fragmentation**: Send fragmented probe packets to the intended target, which re-assembles it after receiving all the fragments
+
+**Source Routing**: Specifies the routing path for the malformed packet to reach the intended target
+
+**Source Port Manipulation**: Manipulate the actual source port with the common source port to evade IDS/firewall
+
+**IP Address Decoy**: Generate or manually specify IP addresses of the decoys so that the IDS/firewall cannot determine the actual IP address
+
+**IP Address Spoofing**: Change source IP addresses so that the attack appears to be coming in as someone else
+
+**Creating Custom Packets**: Send custom packets to scan the intended target beyond the firewalls
+
+**Randomizing Host Order**: Scan the number of hosts in the target network in a random order to scan the intended target that is lying beyond the firewall
+
+**Sending Bad Checksums**: Send the packets with bad or bogus TCP/UDP checksums to the intended target
+
+**Proxy Servers**: Use a chain of proxy servers to hide the actual source of a scan and evade certain IDS/firewall restrictions
+
+**Anonymizers**: Use anonymizers that allow them to bypass Internet censors and evade certain IDS and firewall rules
+
+#### 1. Various Firewall Evasion techniques with nmap
+
+**Fragmented scan**
+
+- nmap -f 192.168.18.110
+
+**Use common source ports**
+
+- nmap -g 80 192.168.18.110
+
+It used a common port to send the traffic. So, it evades firewall.
+
+**Sending smaller packets to scan**
+
+- nmap --mtu 8 192.168.18.110
+
+It fragments the packets (maximum 8 bytes size)
+
+**Decoy scan**
+
+- nmap -D RND:10 192.168.18.110
+
+Decoy hides the actual source IP in a number of random IP addresses to hide the actual identity.
+
+**Spoof MAC**
+
+- nmap -sT -Pn --spoof-mac 0 192.168.18.110
+
+- - -sT  TCP scan
+- - -Pn do not perform host discovery
+- - --spoof-mac randomize the mac address
+
+<img width="638" height="333" alt="image" src="https://github.com/user-attachments/assets/9547e0e9-e171-46e5-bed6-c2c8e1a66d2e" />
+
+---
+
+### 2. Colasoft packet builder to avoid AV
+
+[Packet Builder for Network Engineer - Colasoft](https://www.colasoft.com/packet_builder/)
