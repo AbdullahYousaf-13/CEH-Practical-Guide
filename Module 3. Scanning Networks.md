@@ -199,7 +199,7 @@ https://www.kali.org/tools/unicornscan/
 
 - unicornscan 192.168.18.100 - Iv
 
--I is for immediate scan and v  is for verbose scan.
+> -I is for immediate scan and v  is for verbose scan.
 
 ---
 
