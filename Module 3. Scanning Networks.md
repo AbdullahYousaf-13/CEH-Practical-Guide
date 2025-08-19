@@ -5,9 +5,7 @@
 Scanning itself is not the actual intrusion, but an extended form of reconnaissance in which the ethical hacker and pen tester learns more about the target. 
 
 - The information gleaned from this reconnaissance helps you to select strategies for the attack on the target system or network.
-
 - In the process of scanning, you attempt to gather information, including the specific IP addresses of the target system that can be accessed over the network (live hosts), open ports, and respective services running on the open ports and vulnerabilities in the live hosts.
-
 - Port scanning will help you identify open ports and services running on specific ports, which involves connecting to Transmission Control Protocol (TCP) and User Datagram Protocol (UDP) system ports. Port scanning is also used to discover the vulnerabilities in the services running on a port.
 
 - Port States:
@@ -33,11 +31,8 @@ The objective of this lab is to conduct network scanning, port scanning, analyzi
 Network scans are needed to:
 
 - Check live systems and open ports
-
 - Identify services running in live systems
-
 - Perform banner grabbing/OS fingerprinting
-
 - Identify network vulnerabilities
 
 ---
@@ -47,37 +42,27 @@ Network scans are needed to:
 These exercises are as per the modules. better tools are
 
 - arpscan
-
 - netdiscover
 
 #### 1.1 Netdiscover
 
 - netdiscover -i (network interface name) (example: eth0 or tun0)
-
 - netdiscover -i eth0
-
 - netdiscover -r 10.10.10.0/24
 
 #### 1.2 Host discovery using nmap
 
 - nmap -sn -PR 10.0.2.2
-
 - -sn disables port scan
-
 - -PR arp scan. sends ARP probes
 
 <img width="513" height="141" alt="{DE78F742-FBBF-4530-A92E-F4529BC80629}" src="https://github.com/user-attachments/assets/1272789c-d2f9-4069-9657-d38f947a16ad" />
 
 - nmap -sn -PU 10.0.2.2  //UDP ping scan
-
 - nmap -sn -PE 192.168.18.1-255  //ICMP Echo scan
-
 - nmap -sn -PM 192.168.18.1-255  //Mask Ping scan (use if ICMP is blocked)
-
 - nmap -sn -PP 192.168.18.1-255  //ICMP timestamp scan
-
 - nmap -sn -PS 192.168.18.1-255  //tcp syn ping scan
-
 - nmap -sn -PO 192.168.18.1-255   //IP protocol scan.use different protocols to test the connectivity
 
 
@@ -135,29 +120,18 @@ we can run udp scans as well.
 
 #### 2.4 Explore Various Network Scanning Techniques using Nmap
 
-nmap -sT -v 192.168.18.110
-
-- -v  Verbose scan lists all hosts and ports in the  result
-
-- -sS stealth scan
-
-- -sU UDP scan
-
-- -sX xmass scan
-
-- -sM Maimon scan (FIN/ACK)
-
-- -sA Ack scan (no response it is filtered and RST means not filtered.
-
-- -sN Null scan
-
-- -T4 Aggressive
-
-- -A all advanced and aggressive scan
-
-- -sV Detects person
-
-- -sC script scanning
+- nmap -sT -v 192.168.18.110
+  - -v  Verbose scan lists all hosts and ports in the  result
+  - -sS stealth scan
+  - -sU UDP scan
+  - -sX xmass scan
+  - -sM Maimon scan (FIN/ACK)
+  - -sA Ack scan (no response it is filtered and RST means not filtered.
+  - -sN Null scan
+  - -T4 Aggressive
+  - -A all advanced and aggressive scan
+  - -sV Detects person
+  - -sC script scanning
 
 Use Zenmap and get used to it
 
@@ -166,7 +140,6 @@ Use Zenmap and get used to it
 Ack scan no response means port is filtered. RST means closed
 
 - hping3 -A -P 80 -C 5 192.168.18.110
-
 - hping3 -S 192.168.149.1 -p 80
 
 ---
@@ -184,7 +157,6 @@ Follow TCP stream in wireshark. Check the ICMP reply after pinging. If TTL is ar
 #### 3.2 Perform OS Discovery using NSE scripting Engine
 
 - sudo nmap -O 192.168.18.110
-
 - sudo nmap -A 192.168.18.110
 
 Enumerating OS details with nmap script over smb
@@ -229,7 +201,7 @@ IDSs and firewalls are efficient security mechanisms; however, they still have s
 
 **Anonymizers**: Use anonymizers that allow them to bypass Internet censors and evade certain IDS and firewall rules
 
-#### 1. Various Firewall Evasion techniques with nmap
+#### 4.1 Various Firewall Evasion techniques with nmap
 
 **Fragmented scan**
 
@@ -265,11 +237,11 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 ---
 
-### 2. Colasoft packet builder to avoid AV
+### 4.2 Colasoft packet builder to avoid AV
 
 [Packet Builder for Network Engineer - Colasoft](https://www.colasoft.com/packet_builder/)
 
-### 3. Custom packet in Hping3
+### 4.3 Custom packet in Hping3
 
 - hping3 --udp --rand-source --data 500 192.168.18.110
 
@@ -277,12 +249,78 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 - hping3 -S -p 80 -c 5 192.168.18.110
 
-  -S is for syn scan
-  -p port number
-  -c number of packets
+  - -S is for syn scan
+  - -p port number
+  - -c number of packets
 
 **Flood/ DDOS with Hping3**
 
 - hping3 192.168.18.110 --flood
 
-  
+
+#### 4.4 Browse anonymously with proxy switcher
+
+[Anonymous Browsing via Proxy Servers with Proxy Switcher](https://www.proxyswitcher.com/)
+
+#### 4.5 Browse anonymously with cyber Ghost
+
+[Fast, Secure & Anonymous VPN service | CyberGhost VPN](https://www.cyberghostvpn.com/)
+
+---
+
+### 5. Network scanning using various tools
+
+#### 5.1 Scan using Metasploit
+
+- service postgresql start
+- msfconsole
+
+Check whether the db is running or not
+
+- db_status
+
+If its not running exit it and then run the commands
+
+- msfdb init
+- service postgresql restart
+
+Start the nmap scan from msf terminal
+
+- nmap -sS -Pn -A -oX test 192.168.18.0/24
+
+After the scan completes, Nmap displays the host information in the target network along with open ports, service and OS enumeration.
+
+Now type the following to import the results.
+
+- db_import test
+- hosts   //to view all hosts
+
+Type service or db-services to see running services.
+
+**Use port scan aux modules**
+
+- use auxiliary/scanner/portscan/syn
+- set interface eth0
+- set PORTS 80
+- set RHOSTS 192.168.18.110-125
+- set THREADS 50
+
+**Other Important Modules**
+
+- auxiliary/scanner/portscan/tcp
+- use auxiliary/scanner/smb/smb_version
+
+---
+
+### 6. Perform Network Scanning using AI
+Network scanning using AI enhances cybersecurity by automating the detection of vulnerabilities and threats.
+
+### 6.1  Scan a Target using ShellGPT
+After incorporating the ShellGPT API in Parrot Security Machine, in the terminal window run
+
+-  sgpt --chat scan --shell "Use hping3 to perform ICMP scanning on the target IP address 10.10.1.11 and stop after 10 iterations"
+
+<img width="759" height="480" alt="image" src="https://github.com/user-attachments/assets/7256e7f7-5a95-4625-a2dd-c6f6a22204ea" />
+
+---
+---
