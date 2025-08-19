@@ -24,7 +24,7 @@ Scanning itself is not the actual intrusion, but an extended form of reconnaissa
 
 **Mastering Nmap for Beginners:** A Comprehensive Guide to Network Scanning Techniques
 
-- https://youtu.be/SrqN8Q5Dp6k
+[Youtube](https://youtu.be/SrqN8Q5Dp6k)
 
 **Objective**
 
@@ -195,7 +195,7 @@ Enumerating OS details with nmap script over smb
 
 #### 3.3 Unicornscan
 
-https://www.kali.org/tools/unicornscan/
+[Unicornscan | Kali Linux Tools](https://www.kali.org/tools/unicornscan/)
 
 - unicornscan 192.168.18.100 - Iv
 
