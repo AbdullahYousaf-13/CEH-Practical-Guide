@@ -41,7 +41,6 @@ Network scans are needed to:
 - Identify network vulnerabilities
 
 ---
----
 
 ### 1. Host Discovery
 
@@ -107,25 +106,32 @@ This technique sends different probe packets of different IP protocols to the ta
 - nmap -sn -PO [target IP address]
 
 ---
----
 
 ### 2. Port and Service Discovery
 
 The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses
 
----
-
 #### 2.1 Megaping (on windows)
-
----
 
 #### 2.2 NetscanToolsPro(on windows)
 
----
-
 #### 2.3 Sxtool (Linux)
 
----
+Scan the subnet
+
+- sx arp 192.168.0.1/24
+
+Let's assume that the actual ARP cache is in the arp.cache file. We can create it manually or use ARP scan as shown below:
+
+- sx arp 192.168.0.1/24 --json | tee arp.cache
+
+Once we have the ARP cache file, we can run scans of higher-level protocols like TCP SYN scan:
+
+- cat arp.cache | sx tcp -p 1-65535 192.168.0.171
+
+we can run udp scans as well.
+
+- cat arp.cache | sx udp --json -p 53 192.168.0.171
 
 #### 2.4 Explore Various Network Scanning Techniques using Nmap
 
@@ -155,8 +161,6 @@ nmap -sT -v 192.168.18.110
 
 Use Zenmap and get used to it
 
----
-
 #### 2.5 HPING
 
 Ack scan no response means port is filtered. RST means closed
@@ -166,7 +170,6 @@ Ack scan no response means port is filtered. RST means closed
 - hping3 -S 192.168.149.1 -p 80
 
 ---
----
 
 ### 3. Perform OS Discovery
 
@@ -174,13 +177,9 @@ Identifying the OS used on the target system allows you to assess the system’s
 
 <img width="581" height="240" alt="image" src="https://github.com/user-attachments/assets/719820b0-031e-4fc3-bb28-5a0a73f77d61" />
 
----
-
 #### 3.1 Identify OS with TTL in wireshark
 
 Follow TCP stream in wireshark. Check the ICMP reply after pinging. If TTL is around 128, its Windows, if around 64, its Linux.
-
----
 
 #### 3.2 Perform OS Discovery using NSE scripting Engine
 
@@ -194,8 +193,6 @@ Enumerating OS details with nmap script over smb
 
 <img width="606" height="234" alt="image" src="https://github.com/user-attachments/assets/75f4f5c6-389a-4939-b670-ec90f33330e8" />
 
----
-
 #### 3.3 Unicornscan
 
 https://www.kali.org/tools/unicornscan/
@@ -204,6 +201,5 @@ https://www.kali.org/tools/unicornscan/
 
 -I is for immediate scan and v  is for verbose scan.
 
----
 ---
 
