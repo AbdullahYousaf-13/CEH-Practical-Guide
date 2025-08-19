@@ -128,7 +128,7 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 
 **Other tools:**
 
--sublis3ter
+- sublis3ter
 
 - pentest-tools
 
