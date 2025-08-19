@@ -1,6 +1,6 @@
-## Module 2
+# Module 2
 
-### Footprinting & Reconnaissance Overview
+## Footprinting & Reconnaissance Overview
 
 **Purpose:**
 
@@ -28,13 +28,13 @@ Extract target details (network, systems, employee info) using open-source tools
 
 ---
 
-### Ways to do Footprinting:
+## Ways to do Footprinting:
 
-#### 1. Footprinting through Search Engines
+### 1. Footprinting through Search Engines
 
 Through the effective use of search engines, you can extract critical information about a target organization such as technology platforms, employee details, login pages, intranet portals etc
 
-- ##### 1.1 Gather Information using Advanced Google Hacking Techniques
+#### 1.1 Gather Information using Advanced Google Hacking Techniques
   
   - intitle:login site:eccouncil.org 
   
@@ -70,7 +70,7 @@ Through the effective use of search engines, you can extract critical informatio
   
   **Google Dorking Cheatsheet:** https://www.exploit-db.com/google-hacking-database
 
-##### 1.2 Gather Information from Video Search Engines
+#### 1.2 Gather Information from Video Search Engines
 
 **Youtube metadata:** 
 
@@ -84,17 +84,17 @@ Through the effective use of search engines, you can extract critical informatio
 
 - https://www.videoreverser.com/
 
-##### 1.3 Reverse Image Search
+#### 1.3 Reverse Image Search
 
 - https://tineye.com/
 
-##### 1.4 FTP search
+#### 1.4 FTP search
 
 - https://www.searchftps.net/
 
 - https://www.freewareweb.com/ftpsearch.shtml
 
-##### 1.5 IOT search Engine
+#### 1.5 IOT search Engine
 
 - https://www.shodan.io/
 
@@ -102,11 +102,11 @@ Through the effective use of search engines, you can extract critical informatio
 
 ---
 
-#### 2. Perform Footprinting Through Internet Research Services
+### 2. Perform Footprinting Through Internet Research Services
 
 As a professional ethical hacker or pen tester, you should be able to extract a variety of information about your target organization from Internet research services.
 
-##### 2.1 Find the Company’s Domains, Subdomains and Hosts using Netcraft and DNSdumpster
+#### 2.1 Find the Company’s Domains, Subdomains and Hosts using Netcraft and DNSdumpster
 
 Domains and sub-domains are part of critical network infrastructure for any organization. A company's top-level domains (TLDs) and subdomains can provide much useful information such as organizational history, services and products, and contact information. A public website is designed to show the presence of an organization on the Internet, and is available for free access.
 
@@ -138,7 +138,7 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 
 - Dirb
 
-##### 2.2 People search
+#### 2.2 People search
 
 - https://www.peekyou.com/
 
@@ -148,7 +148,7 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 
 - https://www.beenverified.com/
 
-##### 2.3 Emails Using theHarvester
+#### 2.3 Emails Using theHarvester
  
 - theHarvester -d microsoft.com -l 200 -b baidu
 
@@ -158,7 +158,7 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 
 - -b source (baidu,google,etc)
 
-##### 2.4 Dark and Deep web searching
+#### 2.4 Dark and Deep web searching
 
 - https://www.torproject.org/download/
 
@@ -166,7 +166,7 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 
 - hidden wiki
 
-##### 2.5 OS footprinting with Censys
+#### 2.5 OS footprinting with Censys
 
 - You can search the site through censys search and get the OS of the system.
 
@@ -176,15 +176,15 @@ Domains and sub-domains are part of critical network infrastructure for any orga
 
 ---
 
-#### 3. Footprinting through Social Networking sites
+### 3. Footprinting through Social Networking sites
 
 By footprinting through social networking sites, you can extract personal information such as name, position, organization name, current location, and educational qualifications.
 
-##### 3.1 Finding employees through Harvester
+#### 3.1 Finding employees through Harvester
 
 - theHarvester -d microsoft -l 200 -b linkedin
 
-##### 3.2 Gather Personal Information from Various Social Networking Sites using Sherlock
+#### 3.2 Gather Personal Information from Various Social Networking Sites using Sherlock
 
 Sherlock is a python-based tool that is used to gather information about a target person over various social networking sites. Sherlock searches a vast number of social networking sites for a given target user, locates the person, and displays the results along with the complete URL related to the target person.
 
@@ -198,7 +198,7 @@ Sherlock is a python-based tool that is used to gather information about a targe
 
 - https://github.com/issamelferkh/userrecon
 
-##### 3.3 Gather information with followerwank
+#### 3.3 Gather information with followerwank
 
 - It provides info about activity, followers, topics etc
 
@@ -210,11 +210,11 @@ Sherlock is a python-based tool that is used to gather information about a targe
 
 ---
 
-#### 4. Website Footprinting
+### 4. Website Footprinting
 
 Website footprinting is the process of gathering technical and organizational details about a target website (e.g., technologies, directories, emails, subdomains) to map its attack surface.
 
-##### 4.1 Gather information with Ping
+#### 4.1 Gather information with Ping
 
 - ping certifiedhacker.com 
 
@@ -252,7 +252,7 @@ Now try different sizes till the time we get hit and so we are able to find the 
 
 <img width="876" height="406" alt="image" src="https://github.com/user-attachments/assets/6a8a5187-9207-4673-99dc-d5106688776d" />
 
-##### 4.2 Website footprinting with Photon
+#### 4.2 Website footprinting with Photon
 
 Incredibly fast crawler designed for OSINT. 
 
@@ -295,7 +295,7 @@ GitHub - s0md3v/Photon (https://github.com/s0md3v/Photon)
 
 - --wayback   searches archive.org
 
-##### 4.3 Gather information about target with central ops
+#### 4.3 Gather information about target with central ops
 
 - https://centralops.net/co/
 
@@ -305,7 +305,7 @@ GitHub - s0md3v/Photon (https://github.com/s0md3v/Photon)
 
 https://website.informer.com/
 
-##### 4.4 Getting Information with web data extractors
+#### 4.4 Getting Information with web data extractors
 
 Windows tool. Need to install
 
@@ -319,7 +319,7 @@ Windows tool. Need to install
 
 - https://github.com/smicallef/spiderfoot
 
-##### 4.5 Website Mirroring with HTTrack
+#### 4.5 Website Mirroring with HTTrack
 
 Windows tool need to install
 
@@ -329,13 +329,13 @@ Windows tool need to install
 
 - https://www.cyotek.com/cyotek-webcopy
 
-##### 4.6 Website recon with Grecon
+#### 4.6 Website recon with Grecon
 
 use google search for reconnaisance
 
 - https://github.com/TebbaaX/GRecon
 
-##### 4.7 Making wordlist with CEWL from website
+#### 4.7 Making wordlist with CEWL from website
 
 c- ewl -w wordlist -d 2 -m 5 www.certifiedhacker.com
 
@@ -347,13 +347,13 @@ c- ewl -w wordlist -d 2 -m 5 www.certifiedhacker.com
 
 ---
 
-#### 5. WHOIS Footprinting
+### 5. WHOIS Footprinting
 
 whois protocol runs on port 43.Regional internet Registries keep records of all data
 
 WHOIS footprinting provides target domain information such as the owner, its registrar, registration details, name server, contact information, etc. Using this information, you can create a map of the organization’s network, perform social engineering attacks, and obtain internal details of the network.
 
-##### 5.1 WHOIS lookup using domain tools
+#### 5.1 WHOIS lookup using domain tools
 
 - https://whois.domaintools.com/
 
@@ -371,11 +371,11 @@ WHOIS footprinting provides target domain information such as the owner, its reg
 
 ---
 
-#### 6. DNS Footprinting
+### 6. DNS Footprinting
 
 You need to perform DNS footprinting to gather information about DNS servers, DNS records, and types of servers used by the target organization. DNS zone data etc.
 
-##### 6.1 Gather DNS Information using nslookup Command Line Utility and Online Tool
+#### 6.1 Gather DNS Information using nslookup Command Line Utility and Online Tool
 
 **Command line in Windows**
 
@@ -399,7 +399,7 @@ Now enter the website name to get the records
 
 <img width="902" height="590" alt="image" src="https://github.com/user-attachments/assets/a1185396-a50d-4302-8312-7069974e59ec" />
 
-##### 6.2 Reverse DNS
+#### 6.2 Reverse DNS
 
 - https://www.yougetsignal.com/
 
@@ -411,7 +411,7 @@ Install dnsrecon (used for DNS Brute forcing)
 
 - ./dnsrecon.py -r <startIP-endIP>
 
-##### 6.3 Subdomains and DNS using security trails
+#### 6.3 Subdomains and DNS using security trails
 
 - https://securitytrails.com/
 
@@ -425,17 +425,17 @@ Install dnsrecon (used for DNS Brute forcing)
 
 <img width="899" height="287" alt="image" src="https://github.com/user-attachments/assets/adaba0ce-49a2-44c4-845d-c369d0e479ba" />
 
-##### 6.4 DNS Cache on Windows
+#### 6.4 DNS Cache on Windows
 
 <img width="723" height="679" alt="image" src="https://github.com/user-attachments/assets/682d6445-01fe-4e1c-ab97-e7b9c23a7aab" />
 
 ---
 
-#### 7. Network footprinting
+### 7. Network footprinting
 
 Network footprinting is carried out to gather the network-related information of a target organization such as network range, traceroute, TTL values, etc
 
-##### 7.1 Locate Network Range
+#### 7.1 Locate Network Range
 
 **visit the website**
 
@@ -443,7 +443,7 @@ Network footprinting is carried out to gather the network-related information of
 
 <img width="818" height="476" alt="image" src="https://github.com/user-attachments/assets/5ca8f811-074c-46c5-bb6a-41b53a3c7602" />
 
-##### 7.2 Perform Network Tracerouting in Windows and Linux Machines
+#### 7.2 Perform Network Tracerouting in Windows and Linux Machines
 
 The route is the path that the network packet traverses between the source and destination. Network tracerouting is a process of identifying the path and hosts lying between the source and destination.
 
@@ -461,7 +461,7 @@ The route is the path that the network packet traverses between the source and d
 
 <img width="862" height="334" alt="image" src="https://github.com/user-attachments/assets/1b7308fc-35b1-430c-a4cd-28d979348498" />
 
-##### 7.3 Advanced Network tracing with path analyzer pro
+#### 7.3 Advanced Network tracing with path analyzer pro
 
 - https://path-analyzer-pro.software.informer.com/2.7/
 
@@ -469,11 +469,11 @@ The route is the path that the network packet traverses between the source and d
 
 ---
 
-#### 8. Email Footprinting
+### 8. Email Footprinting
 
 Email tracking allows you to collect information such as IP addresses, mail servers, OS details, geolocation, information about service providers involved in sending the mail etc.
 
-##### 8.1 Gather Information about a Target by Tracing Emails using eMailTrackerPro
+#### 8.1 Gather Information about a Target by Tracing Emails using eMailTrackerPro
 
 Windows tool to analyze headers also provide other options like when email was opened by recipient. 
 
@@ -540,11 +540,11 @@ Whenever someone clicks the link, we get the data about the target.
 ---
 
 
-#### 9. Footprinting using footprinting tools
+### 9. Footprinting using footprinting tools
 
 Footprinting tools are used to collect basic information about the target systems in order to exploit them.
 
-##### 9.1 Footprinting with Recon-ng
+#### 9.1 Footprinting with Recon-ng
 
 Start the tool
 
@@ -652,11 +652,11 @@ Set the website as target
 
 ---
 
-#### 10. Perform Footprinting using AI
+### 10. Perform Footprinting using AI
 
 Footprinting using AI accelerates the reconnaissance process by automating data collection and analysis, allowing security professionals to uncover vulnerabilities more efficiently.
 
-##### 10.1 Footprinting a Target using ShellGPT
+#### 10.1 Footprinting a Target using ShellGPT
 
 To use ShellGPT for harvesting emails pertaining to a target organization. To do so, run
 
@@ -684,5 +684,7 @@ To automate footprinting tasks.
 
 <img width="901" height="676" alt="image" src="https://github.com/user-attachments/assets/02fd1eec-13e5-4cd4-9872-ccb144b0a3e4" />
 
+---
+---
 ---
 ---
