@@ -257,9 +257,9 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 - nmap -sT -Pn --spoof-mac 0 192.168.18.110
 
-- - -sT  TCP scan
-- - -Pn do not perform host discovery
-- - --spoof-mac randomize the mac address
+  - -sT  TCP scan
+  - -Pn do not perform host discovery
+  - --spoof-mac randomize the mac address
 
 <img width="638" height="333" alt="image" src="https://github.com/user-attachments/assets/9547e0e9-e171-46e5-bed6-c2c8e1a66d2e" />
 
@@ -273,10 +273,16 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 - hping3 --udp --rand-source --data 500 192.168.18.110
 
---data specifies the packet body size
+  --data specifies the packet body size
 
 - hping3 -S -p 80 -c 5 192.168.18.110
 
--S is for syn scan
--p port number
--c number of packets
+  -S is for syn scan
+  -p port number
+  -c number of packets
+
+**Flood/ DDOS with Hping3**
+
+- hping3 192.168.18.110 --flood
+
+  
