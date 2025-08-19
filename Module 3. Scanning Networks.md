@@ -22,8 +22,7 @@ Scanning itself is not the actual intrusion, but an extended form of reconnaissa
 
 <img width="897" height="480" alt="image" src="https://github.com/user-attachments/assets/c700baeb-752b-4255-b63f-27c33accb6d3" />
 
-
-**Mastering Nmap for Beginners:** A Comprehensive Guide to Network Scanning Techniques
+**Mastering Nmap for Beginners**: A Comprehensive Guide to Network Scanning Techniques
 
 [Youtube](https://youtu.be/SrqN8Q5Dp6k)
 
@@ -270,3 +269,14 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 [Packet Builder for Network Engineer - Colasoft](https://www.colasoft.com/packet_builder/)
 
+### 3. Custom packet in Hping3
+
+- hping3 --udp --rand-source --data 500 192.168.18.110
+
+--data specifies the packet body size
+
+- hping3 -S -p 80 -c 5 192.168.18.110
+
+-S is for syn scan
+-p port number
+-c number of packets
