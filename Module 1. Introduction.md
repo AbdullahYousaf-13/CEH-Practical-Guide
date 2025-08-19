@@ -28,13 +28,13 @@
 ---
 ---
 
-## Module 1
+# Module 1
 
-### Complete Study Resources & Tips
+## Complete Study Resources & Tips
 
 Discover comprehensive resources and expert tips to pass the Certified Ethical Hacker (CEH) Practical exam. Learn tools, techniques, and step-by-step instructions to ace the CEH Practical exam.
 
-### Introduction
+## Introduction
 
 Welcome to your ultimate guide to passing the Certified Ethical Hacker (CEH) Practical exam. This resource provides all the tools, techniques, procedures, and notes you need for your CEH preparation.
 
