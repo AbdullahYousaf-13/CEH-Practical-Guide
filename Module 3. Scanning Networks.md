@@ -1,6 +1,6 @@
-## Module 3
+# Module 3
 
-### Scanning Networks
+## Scanning Networks
 
 Scanning itself is not the actual intrusion, but an extended form of reconnaissance in which the ethical hacker and pen tester learns more about the target. 
 
@@ -41,8 +41,9 @@ Network scans are needed to:
 - Identify network vulnerabilities
 
 ---
+---
 
-#### 1. Host Discovery
+### 1. Host Discovery
 
 These exercises are as per the modules. better tools are
 
@@ -50,7 +51,7 @@ These exercises are as per the modules. better tools are
 
 - netdiscover
 
-##### 1.1 Netdiscover
+#### 1.1 Netdiscover
 
 - netdiscover -i (network interface name) (example: eth0 or tun0)
 
@@ -58,7 +59,7 @@ These exercises are as per the modules. better tools are
 
 - netdiscover -r 10.10.10.0/24
 
-##### 1.2 Host discovery using nmap
+#### 1.2 Host discovery using nmap
 
 - nmap -sn -PR 10.0.2.2
 
@@ -106,26 +107,27 @@ This technique sends different probe packets of different IP protocols to the ta
 - nmap -sn -PO [target IP address]
 
 ---
+---
 
-#### 2. Port and Service Discovery
+### 2. Port and Service Discovery
 
 The next step after discovering active hosts in the target network is to scan for open ports and services running on the target IP addresses
 
 ---
 
-##### 2.1 Megaping (on windows)
+#### 2.1 Megaping (on windows)
 
 ---
 
-##### 2.2 NetscanToolsPro(on windows)
+#### 2.2 NetscanToolsPro(on windows)
 
 ---
 
-##### 2.3 Sxtool (Linux)
+#### 2.3 Sxtool (Linux)
 
 ---
 
-2.4 Explore Various Network Scanning Techniques using Nmap
+#### 2.4 Explore Various Network Scanning Techniques using Nmap
 
 nmap -sT -v 192.168.18.110
 
@@ -155,7 +157,7 @@ Use Zenmap and get used to it
 
 ---
 
-##### 2.5 HPING
+#### 2.5 HPING
 
 Ack scan no response means port is filtered. RST means closed
 
@@ -165,3 +167,43 @@ Ack scan no response means port is filtered. RST means closed
 
 ---
 ---
+
+### 3. Perform OS Discovery
+
+Identifying the OS used on the target system allows you to assess the system’s vulnerabilities and the exploits that might work on the system to perform additional attacks.
+
+<img width="581" height="240" alt="image" src="https://github.com/user-attachments/assets/719820b0-031e-4fc3-bb28-5a0a73f77d61" />
+
+---
+
+#### 3.1 Identify OS with TTL in wireshark
+
+Follow TCP stream in wireshark. Check the ICMP reply after pinging. If TTL is around 128, its Windows, if around 64, its Linux.
+
+---
+
+#### 3.2 Perform OS Discovery using NSE scripting Engine
+
+- sudo nmap -O 192.168.18.110
+
+- sudo nmap -A 192.168.18.110
+
+Enumerating OS details with nmap script over smb
+
+- sudo nmap --script smb-os-discovery.nse 192.168.18.110
+
+<img width="606" height="234" alt="image" src="https://github.com/user-attachments/assets/75f4f5c6-389a-4939-b670-ec90f33330e8" />
+
+---
+
+#### 3.3 Unicornscan
+
+https://www.kali.org/tools/unicornscan/
+
+- unicornscan 192.168.18.100 - Iv
+
+-I is for immediate scan and v  is for verbose scan.
+
+---
+---
+
