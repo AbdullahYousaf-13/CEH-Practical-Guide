@@ -266,18 +266,73 @@ Global Network Inventory is used as an audit scanner in zero deployment and agen
 1. After installation, open the tool. The Global Network Inventory GUI appears. Click Close on the Tip of the Day pop-up.
 2. The New Audit Wizard window appears; click Next.
 3. Under the Audit Scan Mode section, click the Single address scan radio button, and then click Next.
+> You can also scan an IP range by clicking on the IP range scan radio button, after which you will specify the target IP range.
 4. Under the Single Address Scan section, specify the target IP address in the Name field of the Single address option (in this example, the target IP address is 10.10.1.22); Click Next.
 5. The next section is Authentication Settings; select the Connect as radio button and enter the Windows Server 2022 machine credentials (Domain\Username: Administrator and Password: Pa$$w0rd), and then click Next.
+> In reality, attackers do not know the credentials of the remote machine(s). In this situation, they choose the Connect as currently logged on user option and perform a scan to determine which machines are active in the network. With this option, they will not be able to extract all the information about the target system. Because this lab is just for assessment purposes, we have entered the credentials of the remote machine directly.
 6. In the final step of the wizard, leave the default settings unchanged and click Finish.
 7. The Scan progress window will appear.
 8. The results are displayed when the scan finished. The Scan summary of the scanned target IP address (10.10.1.22) appears.
+> The scan result might vary when you perform this task.
 9. Hover your mouse cursor over the Computer details under the Scan summary tab to view the scan summary, as shown in the screenshot.
 10. Click the Operating System tab and hover the mouse cursor over Windows details to view the complete details of the machine.
 11. Click the BIOS tab, and hover the mouse cursor over windows details to display detailed BIOS settings information.
 12. Click the NetBIOS tab, and hover the mouse cursor over any NetBIOS application to display the detailed NetBIOS information about the target.
+> Hover the mouse cursor over each NetBIOS application to view its details.
 13. Click the User groups tab and hover the mouse cursor over any username to display detailed user groups information.
+> Hover the mouse cursor over each username to view its details
 14. Click the Users tab, and hover the mouse cursor over the username to view login details for the target machine.
 15. Click the Services tab and hover the mouse cursor over any service to view its details.
 16. Click the Installed software tab, and hover the mouse cursor over any software to view its details.
 17. Click the Shares tab, and hover the mouse cursor over any shared folder to view its details.
 18. Similarly, you can click other tabs such as Computer System, Processors, Main board, Memory, SNMP systems and Hot fixes. Hover the mouse cursor over elements under each tab to view their detailed information.
+
+#### 8.2 Enumerate using angry IP scanner
+[Angry IP Scanner - the original IP scanner for Windows, Mac and Linux](https://angryip.org/)
+
+#### 8.3 Enumerate using Enum4Linux from samba and Windows hosts
+
+**enumerate netbios name**
+- `enum4linux -u martin -p apple -n 192.168.18.110`
+  - -n netbios
+  - -U get usernames
+  - -M get machine list*
+  - -S get sharelist
+  - -P get password policy information
+  - -G get group and member list
+ 
+**Enumerate everything**
+- `enum4linux -a 192.168.18.110`
+
+---
+
+### 9. Perform Enumeration using AI
+Artificial Intelligence (AI) can significantly enhance the enumeration process by automating tasks, analyzing large datasets, and identifying patterns that might be missed by traditional tools.
+
+#### 9.1 Perform Enumeration using ShellGPT
+
+**Perform NetBIOS enumeration on target system**
+- `sgpt --shell “Perform NetBIOS enumeration on target IP 10.10.1.11”`
+
+**For Netbios enumeration**
+- `sgpt --shell “Get NetBIOS info for IP 10.10.1.11 and display the associated names"`
+- `sgpt --shell “Enumerate NetBIOS on target IP 10.10.1.22 with nmap”`
+
+**For SNMP**
+- `sgpt --chat enum --shell “Perform SNMP enumeration on target IP 10.10.1.22 using SnmpWalk and display the result here”`
+- `sgpt --chat enum --shell “Perform SNMP enumeration on target IP 10.10.1.22 using nmap and display the result here"`
+
+**Other Examples**
+- `gpt --chat enum --shell “Perform SNMP processes on target IP 10.10.1.22 using nmap and display the result here"`
+- `sgpt --chat enum --shell “Perform SMTP enumeration on target IP 10.10.1.19.”`
+- `sgpt --chat enum --shell "Use Nmap to perform DNS Enumeration on target domain www.certifiedhacker.com"`
+- ` sgpt --chat enum --shell “Use dig command to perform DNS cache snooping on target domain www.certifiedhacker.com using recursive method. Use DNS server IP as 162.241.216.11"`
+- `sgpt --chat enum --shell "Use dig command to perform DNS cache snooping on the target domain www.certifiedhacker.com using non-recursive method. Use DNS server IP as 162.241.216.11"`
+- `sgpt --shell “Perform IPsec enumeration on target IP 10.10.1.22 with Nmap" `
+- `sgpt --shell “Scan the target IP 10.10.1.22 for the port using SMB with Nmap”`
+- `sgpt --chat enum --shell “Develop and execute a script which will automate various network enumeration tasks on target IP range 10.10.1.0/24” `
+- `sgpt --shell "Use nmap script to perform ldap-brute-force on IP 10.10.1.22" `
+- `sgpt --shell "Use Nmap to perform FTP Enumeration on www.certifiedhacker.com"`
+
+---
+---
