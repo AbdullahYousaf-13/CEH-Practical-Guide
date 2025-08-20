@@ -56,26 +56,26 @@ NetBIOS enumeration targets the NetBIOS Name Service (UDP/137) to extract hostna
 
 ---
 
-### SNMP Enumeration (Ports 161,162)
+### 2. SNMP Enumeration (Ports 161,162)
 SNMP (Simple Network Management Protocol) communicates on UDP ports 161 (requests) and 162 (traps). Attackers leverage weak or default community strings to gather sensitive information such as system details, running processes, network configurations, and user accounts.
 
-#### 1. SNMP Enumeration using snmp-check
+#### 2.1 SNMP Enumeration using snmp-check
 - Tool to enumerate SNMP devices and extract useful info.  
 - Command: `snmp-check <IP> -c <community>`  
 - Information gathered: system name, description, uptime, services, processes, and network info.
 
-#### 2. SNMP Enumeration with SoftPerfect Network Scanner
+#### 2.2 SNMP Enumeration with SoftPerfect Network Scanner
 - GUI-based tool that supports SNMP enumeration.  
 - Can discover live hosts, shared folders, SNMP data, and services.  
 - Useful for admins and attackers to map networks visually.
 
-#### 3. Perform SNMP Enumeration using SnmpWalk
+#### 2.3 Perform SNMP Enumeration using SnmpWalk
 - Command-line tool that queries SNMP OIDs.  
 - Example: `snmpwalk -v2c -c public <IP>`  
 - Can dump entire SNMP tree: system details, processes, and routing tables.  
 - Helpful for in-depth enumeration when community string is known.
 
-#### 4. SNMP Enumeration using NMAP
+#### 2.4 SNMP Enumeration using NMAP
 - Nmap has NSE scripts for SNMP.  
 - Commands:  
   - `nmap -sU -p 161 --script snmp-info <IP>` → System details  
@@ -83,7 +83,7 @@ SNMP (Simple Network Management Protocol) communicates on UDP ports 161 (request
   - `nmap -sU -p 161 --script snmp-netstat <IP>` → Network connections  
   - `nmap -sU -p 161 --script snmp-brute <IP>` → Brute-force community strings
 
-#### 5. Other SNMP enumeration Tools
+#### 2.5 Other SNMP enumeration Tools
 - **OneSixtyOne**: Brute-forces community strings (`onesixtyone -c dict.txt <IP>`)  
 - **SNMPUtil (Windows)**: Extracts MIB values  
 - **SolarWinds SNMP Enumerator**: GUI-based enumeration  
@@ -99,6 +99,80 @@ SNMP (Simple Network Management Protocol) communicates on UDP ports 161 (request
 - Restrict SNMP access to trusted IPs only.  
 - Disable SNMP if not required, or use SNMPv3 (with encryption & authentication).  
 - Apply strict ACLs and monitor SNMP traffic for anomalies.
+
+---
+
+### 3. LDAP Enumeration (Port 389)
+LDAP (Lightweight Directory Access Protocol) is used on TCP/UDP port 389 to query and manage directory services like Microsoft Active Directory. If anonymous or weakly authenticated binds are allowed, attackers can enumerate users, groups, and organizational data.
+
+#### 3.1 Active Directory Explorer
+- A GUI tool for browsing and editing Active Directory databases.  
+- Steps:  
+  1. Once you open the tool, the **Connect to Active Directory** pop-up appears.  
+  2. Type the IP address of the target in the **Connect to** field (e.g., `10.10.1.22`) and click **OK**.
+  3. The Active Directory Explorer displays the directory structure in the left pane.  
+  4. Expand **DC=CEH, DC=com**, and then **CN=Users** to explore domain user details.  
+  5. Click any username in the left pane to display its properties in the right pane.  
+  6. Right-click any attribute (e.g., `displayName`) and select **Modify…** to edit user profile attributes.  
+  7. In the **Modify Attribute** window, select the username, click **Modify…**, then edit the value and save changes.  
+- You can read and modify other user profile attributes the same way.
+
+#### 3.2 LDAP Enumeration with Python and Nmap
+- **Python scripts** and Nmap NSE scripts are commonly used to extract LDAP info.  
+- Steps:  
+  1. Use Nmap NSE: `nmap -p 389 --script ldap-rootdse <IP>` to gather root DSE info.  
+  2. Use Python ldap3 library for custom queries:  
+     ```python
+     from ldap3 import Server, Connection, ALL
+     server = Server('10.10.1.22', get_info=ALL)
+     conn = Connection(server, auto_bind=True)
+     conn.search('', '(objectclass=*)')
+     print(conn.entries)
+     ```  
+- Can retrieve users, groups, and domain details programmatically.
+
+#### 3.3 LDAP Enumeration with ldapsearch
+- **ldapsearch** is a Linux command-line tool for querying LDAP directories.  
+- Common commands:  
+  - `ldapsearch -h 192.168.18.110 -x -s base namingcontexts`  
+    - `-x`: simple authentication  
+    - `-h`: target host  
+    - `-s`: scope  
+  - `ldapsearch -h 192.168.18.110 -x -b "DC=CEH,DC=COM"`  
+    - `-b`: base DN for search  
+  - `ldapsearch -h 192.168.18.110 -x -b "DC=CEH,DC=COM" "objectclass=*"`  
+    - Dumps all objects under the base DN
+
+---
+
+### 4. NFS Enumeration
+
+NFS (Network File System) enables computer users to access, view, store, and update files over a remote server. The client interacts with this remote data just like it does with local files.  
+Key ports for NFS:
+- **111/tcp** → Portmapper/RPCBind  
+- **2049/tcp** → NFS Service  
+
+#### 1. NFS enumeration with RPCscan and SuperEnum
+- First, scan the NFS port:  
+`nmap -p 2049 192.168.18.110`  
+
+- **SuperEnum**:  
+  - A script that performs basic enumeration of any open port, including NFS (2049).  
+  - GitHub: [p4pentest/SuperEnum](https://github.com/p4pentest/SuperEnum)  
+  - Run using: `./superenum.py`  
+  - Requires a file containing a list of IP addresses.  
+
+- **RPCScan**:  
+  - Communicates with RPC services and detects misconfigurations on NFS shares.  
+  - Lists RPC services, mountpoints, and directories accessible via NFS.  
+  - Can recursively list NFS shares.  
+  - GitHub: [hegusung/RPCScan](https://github.com/hegusung/RPCScan)  
+  - Run using: `./rpcscan.py 192.168.18.110 --rpc`  
+
+- **Result**:  
+  - Confirms that port **2049/tcp** is open.  
+  - Shows NFS service is running.  
+  - Displays exported shares and accessible directories.  
 
 ---
 
