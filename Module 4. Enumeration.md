@@ -152,7 +152,7 @@ Key ports for NFS:
 - **111/tcp** → Portmapper/RPCBind  
 - **2049/tcp** → NFS Service  
 
-#### 1. NFS enumeration with RPCscan and SuperEnum
+#### 4.1 NFS enumeration with RPCscan and SuperEnum
 - First, scan the NFS port:  
 `nmap -p 2049 192.168.18.110`  
 
