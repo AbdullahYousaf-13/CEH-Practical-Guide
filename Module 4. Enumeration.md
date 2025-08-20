@@ -217,3 +217,18 @@ Execute zone transfer:
 
 ---
 
+### 6. SMTP Enumeration
+SMTP enumeration is performed to obtain a list of valid users, delivery addresses, message recipients on an SMTP server. Ports 25,2525 or 587.
+
+#### 6.1 SMTP Enumeration using Nmap
+
+enumerate smtp users
+- `nmap -p 25 --script=smtp-enum-users 192.168.18.110`
+
+Enumerate smtp relays on target
+- `nmap -p 25 --script smtp-open-relay 192.168.18.110`
+
+Enumerate smtp commands
+- `nmap -p 25 --script smtp-commands 192.168.18.110`
+
+> Using information gathered, the attackers can perform password spraying attacks to gain unauthorized access to the user accounts.
