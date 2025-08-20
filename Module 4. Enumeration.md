@@ -7,13 +7,14 @@ Enumeration is the process of extracting usernames, machine names, network resou
 Actively extract detailed information about the target network to identify vulnerabilities and weak points for further testing.
 
 ### Key Information to Gather
-*   **Hosts:** Machine names, OS details, services, and ports.
-*   **Users & Groups:** Usernames, group memberships.
-*   **Network Resources:** Shares, policies, routing tables.
-*   **Configurations:** SNMP data, FQDN details, audit settings.
+- **Hosts:** Machine names, OS details, services, and ports.
+- **Users & Groups:** Usernames, group memberships.
+- **Network Resources:** Shares, policies, routing tables.
+- **Configurations:** SNMP data, FQDN details, audit settings.
 
 ### Critical Legal Warning
-**Enumeration is an active intrusion technique.** It often violates security policies and laws. **Explicit, written authorization** is mandatory before proceeding.
+- Enumeration is an active intrusion technique.** It often violates security policies and laws.
+- **Explicit, written authorization** is mandatory before proceeding.
 
 ## Purpose
 The extracted data is used to identify vulnerabilities and plan credential-based attacks, mimicking a real attacker's methodology.
