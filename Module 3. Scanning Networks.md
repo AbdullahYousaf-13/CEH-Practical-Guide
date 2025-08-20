@@ -46,49 +46,45 @@ These exercises are as per the modules. better tools are
 
 #### 1.1 Netdiscover
 
-- netdiscover -i (network interface name) (example: eth0 or tun0)
-- netdiscover -i eth0
-- netdiscover -r 10.10.10.0/24
+- `netdiscover -i (network interface name)` (example: eth0 or tun0)
+- `netdiscover -i eth0`
+- `netdiscover -r 10.10.10.0/24`
 
 #### 1.2 Host discovery using nmap
 
-- nmap -sn -PR 10.0.2.2
-- -sn disables port scan
-- -PR arp scan. sends ARP probes
+- `nmap -sn -PR 10.0.2.2`
+- `-sn disables port scan`
+- `-PR arp scan. sends ARP probes`
 
 <img width="513" height="141" alt="{DE78F742-FBBF-4530-A92E-F4529BC80629}" src="https://github.com/user-attachments/assets/1272789c-d2f9-4069-9657-d38f947a16ad" />
 
-- nmap -sn -PU 10.0.2.2  //UDP ping scan
-- nmap -sn -PE 192.168.18.1-255  //ICMP Echo scan
-- nmap -sn -PM 192.168.18.1-255  //Mask Ping scan (use if ICMP is blocked)
-- nmap -sn -PP 192.168.18.1-255  //ICMP timestamp scan
-- nmap -sn -PS 192.168.18.1-255  //tcp syn ping scan
-- nmap -sn -PO 192.168.18.1-255   //IP protocol scan.use different protocols to test the connectivity
+- `nmap -sn -PU 10.0.2.2`  //UDP ping scan
+- `nmap -sn -PE 192.168.18.1-255`  //ICMP Echo scan
+- `nmap -sn -PM 192.168.18.1-255`  //Mask Ping scan (use if ICMP is blocked)
+- `nmap -sn -PP 192.168.18.1-255`  //ICMP timestamp scan
+- `nmap -sn -PS 192.168.18.1-255`  //tcp syn ping scan
+- `nmap -sn -PO 192.168.18.1-255`   //IP protocol scan.use different protocols to test the connectivity
 
 
 **ICMP Address Mask Ping Scan:** 
 
 This technique is an alternative for the traditional ICMP ECHO ping scan, which are used to determine whether the target host is live specifically when administrators block the ICMP ECHO pings.
-
-- nmap -sn -PM [target IP address]
+- `nmap -sn -PM [target IP address]`
 
 **TCP SYN Ping Scan:**
 
 This technique sends empty TCP SYN packets to the target host, ACK response means that the host is active.
-
-- nmap -sn -PS [target IP address]
+- `nmap -sn -PS [target IP address]`
 
 **TCP ACK Ping Scan:**
 
 This technique sends empty TCP ACK packets to the target host; an RST response means that the host is active.
-
-- nmap -sn -PA [target IP address]
+- `nmap -sn -PA [target IP address]`
 
 **IP Protocol Ping Scan:**
 
 This technique sends different probe packets of different IP protocols to the target host, any response from any probe indicates that a host is active.
-
-- nmap -sn -PO [target IP address]
+- `nmap -sn -PO [target IP address]`
 
 ---
 
@@ -103,35 +99,31 @@ The next step after discovering active hosts in the target network is to scan fo
 #### 2.3 Sxtool (Linux)
 
 Scan the subnet
-
-- sx arp 192.168.0.1/24
+- `sx arp 192.168.0.1/24`
 
 Let's assume that the actual ARP cache is in the arp.cache file. We can create it manually or use ARP scan as shown below:
-
-- sx arp 192.168.0.1/24 --json | tee arp.cache
+- `sx arp 192.168.0.1/24 --json | tee arp.cache`
 
 Once we have the ARP cache file, we can run scans of higher-level protocols like TCP SYN scan:
-
-- cat arp.cache | sx tcp -p 1-65535 192.168.0.171
+- `cat arp.cache | sx tcp -p 1-65535 192.168.0.171`
 
 we can run udp scans as well.
-
-- cat arp.cache | sx udp --json -p 53 192.168.0.171
+- `cat arp.cache | sx udp --json -p 53 192.168.0.171`
 
 #### 2.4 Explore Various Network Scanning Techniques using Nmap
 
-- nmap -sT -v 192.168.18.110
-  - -v  Verbose scan lists all hosts and ports in the  result
-  - -sS stealth scan
-  - -sU UDP scan
-  - -sX xmass scan
-  - -sM Maimon scan (FIN/ACK)
-  - -sA Ack scan (no response it is filtered and RST means not filtered.
-  - -sN Null scan
-  - -T4 Aggressive
-  - -A all advanced and aggressive scan
-  - -sV Detects person
-  - -sC script scanning
+- `nmap -sT -v 192.168.18.110`
+  - `-v`  Verbose scan lists all hosts and ports in the  result
+  - `-sS` stealth scan
+  - `-sU` UDP scan
+  - `-sX` xmass scan
+  - `-sM` Maimon scan (FIN/ACK)
+  - `-sA` Ack scan (no response it is filtered and RST means not filtered.
+  - `-sN` Null scan
+  - `-T4` Aggressive
+  - `-A` all advanced and aggressive scan
+  - `-sV` Detects person
+  - `-sC` script scanning
 
 Use Zenmap and get used to it
 
@@ -139,8 +131,8 @@ Use Zenmap and get used to it
 
 Ack scan no response means port is filtered. RST means closed
 
-- hping3 -A -P 80 -C 5 192.168.18.110
-- hping3 -S 192.168.149.1 -p 80
+- `hping3 -A -P 80 -C 5 192.168.18.110`
+- `hping3 -S 192.168.149.1 -p 80`
 
 ---
 
@@ -156,12 +148,11 @@ Follow TCP stream in wireshark. Check the ICMP reply after pinging. If TTL is ar
 
 #### 3.2 Perform OS Discovery using NSE scripting Engine
 
-- sudo nmap -O 192.168.18.110
-- sudo nmap -A 192.168.18.110
+- `sudo nmap -O 192.168.18.110`
+- `sudo nmap -A 192.168.18.110`
 
 Enumerating OS details with nmap script over smb
-
-- sudo nmap --script smb-os-discovery.nse 192.168.18.110
+- `sudo nmap --script smb-os-discovery.nse 192.168.18.110`
 
 <img width="606" height="234" alt="image" src="https://github.com/user-attachments/assets/75f4f5c6-389a-4939-b670-ec90f33330e8" />
 
@@ -169,7 +160,7 @@ Enumerating OS details with nmap script over smb
 
 [Unicornscan | Kali Linux Tools](https://www.kali.org/tools/unicornscan/)
 
-- unicornscan 192.168.18.100 - Iv
+- `unicornscan 192.168.18.100 - Iv`
 
 > -I is for immediate scan and v  is for verbose scan.
 
@@ -204,34 +195,25 @@ IDSs and firewalls are efficient security mechanisms; however, they still have s
 #### 4.1 Various Firewall Evasion techniques with nmap
 
 **Fragmented scan**
-
-- nmap -f 192.168.18.110
+- `nmap -f 192.168.18.110`
 
 **Use common source ports**
-
-- nmap -g 80 192.168.18.110
-
-It used a common port to send the traffic. So, it evades firewall.
+- `nmap -g 80 192.168.18.110`
+> It used a common port to send the traffic. So, it evades firewall.
 
 **Sending smaller packets to scan**
-
-- nmap --mtu 8 192.168.18.110
-
-It fragments the packets (maximum 8 bytes size)
+- `nmap --mtu 8 192.168.18.110`
+> It fragments the packets (maximum 8 bytes size)
 
 **Decoy scan**
-
-- nmap -D RND:10 192.168.18.110
-
-Decoy hides the actual source IP in a number of random IP addresses to hide the actual identity.
+- `nmap -D RND:10 192.168.18.110`
+> Decoy hides the actual source IP in a number of random IP addresses to hide the actual identity.
 
 **Spoof MAC**
-
-- nmap -sT -Pn --spoof-mac 0 192.168.18.110
-
-  - -sT  TCP scan
-  - -Pn do not perform host discovery
-  - --spoof-mac randomize the mac address
+- `nmap -sT -Pn --spoof-mac 0 192.168.18.110`
+  - `-sT`  TCP scan
+  - `-Pn` do not perform host discovery
+  - `--spoof-mac` randomize the mac address
 
 <img width="638" height="333" alt="image" src="https://github.com/user-attachments/assets/9547e0e9-e171-46e5-bed6-c2c8e1a66d2e" />
 
@@ -243,20 +225,15 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 ### 4.3 Custom packet in Hping3
 
-- hping3 --udp --rand-source --data 500 192.168.18.110
-
-  --data specifies the packet body size
-
-- hping3 -S -p 80 -c 5 192.168.18.110
-
-  - -S is for syn scan
-  - -p port number
-  - -c number of packets
+- `hping3 --udp --rand-source --data 500 192.168.18.110`
+  - `--data` specifies the packet body size
+- `hping3 -S -p 80 -c 5 192.168.18.110`
+  - `-S` is for syn scan
+  - `-p` port number
+  - `-c` number of packets
 
 **Flood/ DDOS with Hping3**
-
-- hping3 192.168.18.110 --flood
-
+- `hping3 192.168.18.110 --flood`
 
 #### 4.4 Browse anonymously with proxy switcher
 
@@ -272,43 +249,37 @@ Decoy hides the actual source IP in a number of random IP addresses to hide the 
 
 #### 5.1 Scan using Metasploit
 
-- service postgresql start
-- msfconsole
+- `service postgresql start`
+- `msfconsole`
 
 Check whether the db is running or not
-
-- db_status
+- `db_status`
 
 If its not running exit it and then run the commands
-
-- msfdb init
-- service postgresql restart
+- `msfdb init`
+- `service postgresql restart`
 
 Start the nmap scan from msf terminal
-
-- nmap -sS -Pn -A -oX test 192.168.18.0/24
+- `nmap -sS -Pn -A -oX test 192.168.18.0/24`
 
 After the scan completes, Nmap displays the host information in the target network along with open ports, service and OS enumeration.
 
 Now type the following to import the results.
+- `db_import test`
+- `hosts`   //to view all hosts
 
-- db_import test
-- hosts   //to view all hosts
-
-Type service or db-services to see running services.
+Type `service` or `db-services` to see running services.
 
 **Use port scan aux modules**
-
-- use auxiliary/scanner/portscan/syn
-- set interface eth0
-- set PORTS 80
-- set RHOSTS 192.168.18.110-125
-- set THREADS 50
+- `use auxiliary/scanner/portscan/syn`
+- `set interface eth0`
+- `set PORTS 80`
+- `set RHOSTS 192.168.18.110-125`
+- `set THREADS 50`
 
 **Other Important Modules**
-
-- auxiliary/scanner/portscan/tcp
-- use auxiliary/scanner/smb/smb_version
+- `auxiliary/scanner/portscan/tcp`
+- `use auxiliary/scanner/smb/smb_version`
 
 ---
 
@@ -317,8 +288,7 @@ Network scanning using AI enhances cybersecurity by automating the detection of 
 
 ### 6.1  Scan a Target using ShellGPT
 After incorporating the ShellGPT API in Parrot Security Machine, in the terminal window run
-
--  sgpt --chat scan --shell "Use hping3 to perform ICMP scanning on the target IP address 10.10.1.11 and stop after 10 iterations"
+-  `sgpt --chat scan --shell "Use hping3 to perform ICMP scanning on the target IP address 10.10.1.11 and stop after 10 iterations"`
 
 <img width="759" height="480" alt="image" src="https://github.com/user-attachments/assets/7256e7f7-5a95-4625-a2dd-c6f6a22204ea" />
 
