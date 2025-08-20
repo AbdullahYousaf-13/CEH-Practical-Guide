@@ -55,3 +55,50 @@ NetBIOS enumeration targets the NetBIOS Name Service (UDP/137) to extract hostna
 - Enforce least-privilege on shares; prefer DNS over NBNS; monitor NBNS broadcasts
 
 ---
+
+### SNMP Enumeration (Ports 161,162)
+SNMP (Simple Network Management Protocol) communicates on UDP ports 161 (requests) and 162 (traps). Attackers leverage weak or default community strings to gather sensitive information such as system details, running processes, network configurations, and user accounts.
+
+#### 1. SNMP Enumeration using snmp-check
+- Tool to enumerate SNMP devices and extract useful info.  
+- Command: `snmp-check <IP> -c <community>`  
+- Information gathered: system name, description, uptime, services, processes, and network info.
+
+#### 2. SNMP Enumeration with SoftPerfect Network Scanner
+- GUI-based tool that supports SNMP enumeration.  
+- Can discover live hosts, shared folders, SNMP data, and services.  
+- Useful for admins and attackers to map networks visually.
+
+#### 3. Perform SNMP Enumeration using SnmpWalk
+- Command-line tool that queries SNMP OIDs.  
+- Example: `snmpwalk -v2c -c public <IP>`  
+- Can dump entire SNMP tree: system details, processes, and routing tables.  
+- Helpful for in-depth enumeration when community string is known.
+
+#### 4. SNMP Enumeration using NMAP
+- Nmap has NSE scripts for SNMP.  
+- Commands:  
+  - `nmap -sU -p 161 --script snmp-info <IP>` → System details  
+  - `nmap -sU -p 161 --script snmp-processes <IP>` → Running processes  
+  - `nmap -sU -p 161 --script snmp-netstat <IP>` → Network connections  
+  - `nmap -sU -p 161 --script snmp-brute <IP>` → Brute-force community strings
+
+#### 5. Other SNMP enumeration Tools
+- **OneSixtyOne**: Brute-forces community strings (`onesixtyone -c dict.txt <IP>`)  
+- **SNMPUtil (Windows)**: Extracts MIB values  
+- **SolarWinds SNMP Enumerator**: GUI-based enumeration  
+- Useful for discovering misconfigured or open SNMP services
+
+#### Security Risks
+- Default community strings like “public/private” often unchanged.  
+- Information disclosure: usernames, processes, routing tables, network services.  
+- Provides attackers with reconnaissance for privilege escalation and lateral movement.
+
+#### Countermeasures
+- Change default SNMP community strings to strong values.  
+- Restrict SNMP access to trusted IPs only.  
+- Disable SNMP if not required, or use SNMPv3 (with encryption & authentication).  
+- Apply strict ACLs and monitor SNMP traffic for anomalies.
+
+---
+
