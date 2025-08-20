@@ -176,3 +176,44 @@ Key ports for NFS:
 
 ---
 
+### 5. DNS Enumeration
+
+DNS enumeration techniques are used to obtain information about the DNS servers and network infrastructure of the target organization.
+
+#### 5.1 DNS Enumeration using Zone Transfer
+
+**Using dig**
+
+Find the nameserver of a domain:
+- `dig ns zonetransfer.me`
+
+Attempt zone transfer for the domain from its name servers:
+- `dig axfr zonetransfer.me @nsztm2.digi.ninja`
+
+**Using nslookup**
+
+Execute zone transfer:
+- `nslookup`
+- `set querytype=soa`
+- `ls -d nsztm2.digi.ninja`
+
+#### 5.2 Zone Transfer using DNSSEC Transfer
+
+**Using dnsrecon**
+- `./dnsrecon.py -d zonetransfer.me -z`
+  - -d: target domain
+  - -z: DNSSEC Zone walk
+
+5.3 DNS Enumeration using Nmap
+
+**DNS service discovery**
+- `nmap --script=broadcast-dns-service-discovery zonetransfer.me`
+
+**DNS brute forcing**
+- `nmap -T5 -p 53 --script dns-brute zonetransfer.me`
+
+**Common service records enumeration**
+- `nmap --script dns-srv-enum --script-args "dns-srv-enum.domain='zonetransfer.me'"`
+
+---
+
