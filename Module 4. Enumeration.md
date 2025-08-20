@@ -21,7 +21,6 @@ The extracted data is used to identify vulnerabilities and plan credential-based
 ---
 
 ### 1. NetBIOS Enumeration (Port 137)
-
 NetBIOS enumeration targets the NetBIOS Name Service (UDP/137) to extract hostnames, workgroup/domain names, logged-in users, and shared resources from Windows networks, helping map SMB exposures and pivot paths.
 
 #### 1.1 Perform NetBIOS Enumeration with Windows Command Line
@@ -146,14 +145,14 @@ LDAP (Lightweight Directory Access Protocol) is used on TCP/UDP port 389 to quer
 ---
 
 ### 4. NFS Enumeration
-
 NFS (Network File System) enables computer users to access, view, store, and update files over a remote server. The client interacts with this remote data just like it does with local files.  
-Key ports for NFS:
+
+**Key ports for NFS**
 - **111/tcp** → Portmapper/RPCBind  
 - **2049/tcp** → NFS Service  
 
 #### 4.1 NFS enumeration with RPCscan and SuperEnum
-- First, scan the NFS port:  
+- First, scan the NFS port  
 `nmap -p 2049 192.168.18.110`  
 
 - **SuperEnum**:  
@@ -177,7 +176,6 @@ Key ports for NFS:
 ---
 
 ### 5. DNS Enumeration
-
 DNS enumeration techniques are used to obtain information about the DNS servers and network infrastructure of the target organization.
 
 #### 5.1 DNS Enumeration using Zone Transfer
@@ -232,3 +230,54 @@ Enumerate smtp commands
 - `nmap -p 25 --script smtp-commands 192.168.18.110`
 
 > Using information gathered, the attackers can perform password spraying attacks to gain unauthorized access to the user accounts.
+
+---
+
+### 7. RPC, SMB and FTP Enumeration
+The process of extracting users, shares, services, and system information from RPC, SMB, and FTP services to identify potential vulnerabilities.
+
+#### 7.1 SMB and RPC (port 111) Enumeration with NetScanTools
+
+**Windows tool**
+
+[NetScanTools® Pro Edition Product Information](https://www.netscantools.com/nstpromain.html)
+
+<img width="430" height="341" alt="image" src="https://github.com/user-attachments/assets/db5f8069-4988-4788-ad69-309dd5f7b75d" />
+
+<img width="661" height="318" alt="image" src="https://github.com/user-attachments/assets/65d902f6-7b6a-4aa1-89a2-1cac4c1ee9bb" />
+
+#### 7.2 Perform SMB, FTP and RPC Enumeration with Nmap
+
+- `nmap -T5 -A 192.168.18.110`
+- `nmap -T5 -p 21 -A 192.168.18.110`
+
+> SMB enumeration scripts are also available in Metasploit.
+
+---
+
+### 8. Enumeration using various tools
+As an ethical hacker, you should use a range of tools to find as much information as possible about the target network’s systems.
+
+#### 8.1 Enumerate using Global Network Inventory
+Global Network Inventory is used as an audit scanner in zero deployment and agent-free environments. It scans single or multiple computers by IP range or domain, as defined by the Global Network Inventory host file.
+
+[Global Network Inventory](https://magnetosoft.com/product-global-network-inventory/Logo)
+
+1. After installation, open the tool. The Global Network Inventory GUI appears. Click Close on the Tip of the Day pop-up.
+2. The New Audit Wizard window appears; click Next.
+3. Under the Audit Scan Mode section, click the Single address scan radio button, and then click Next.
+4. Under the Single Address Scan section, specify the target IP address in the Name field of the Single address option (in this example, the target IP address is 10.10.1.22); Click Next.
+5. The next section is Authentication Settings; select the Connect as radio button and enter the Windows Server 2022 machine credentials (Domain\Username: Administrator and Password: Pa$$w0rd), and then click Next.
+6. In the final step of the wizard, leave the default settings unchanged and click Finish.
+7. The Scan progress window will appear.
+8. The results are displayed when the scan finished. The Scan summary of the scanned target IP address (10.10.1.22) appears.
+9. Hover your mouse cursor over the Computer details under the Scan summary tab to view the scan summary, as shown in the screenshot.
+10. Click the Operating System tab and hover the mouse cursor over Windows details to view the complete details of the machine.
+11. Click the BIOS tab, and hover the mouse cursor over windows details to display detailed BIOS settings information.
+12. Click the NetBIOS tab, and hover the mouse cursor over any NetBIOS application to display the detailed NetBIOS information about the target.
+13. Click the User groups tab and hover the mouse cursor over any username to display detailed user groups information.
+14. Click the Users tab, and hover the mouse cursor over the username to view login details for the target machine.
+15. Click the Services tab and hover the mouse cursor over any service to view its details.
+16. Click the Installed software tab, and hover the mouse cursor over any software to view its details.
+17. Click the Shares tab, and hover the mouse cursor over any shared folder to view its details.
+18. Similarly, you can click other tabs such as Computer System, Processors, Main board, Memory, SNMP systems and Hot fixes. Hover the mouse cursor over elements under each tab to view their detailed information.
