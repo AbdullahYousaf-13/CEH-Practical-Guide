@@ -257,15 +257,18 @@ Polkit (formerly PolicyKit) is a component for controlling system-wide privilege
 
 ---
 
-Remote code execution techniques are often performed after initially compromising a system and further expanding access to remote systems present on the target network.
-
 ### 3. Maintain Remote Access and Hide Malicious Activities
+Remote code execution techniques are often performed after initially compromising a system and further expanding access to remote systems present on the target network.
 
 #### 3.1 User system Monitoring with PowerSpy
 Keylogger software
 
+[Power Spy Lite](https://power-spy-software-lite.en.softonic.com/)
+
 #### 3.2 System Monitoring with Spytech spyagent
 Tool for monitoring user activity and capturing keystrokes.
+
+[Spytech SpyAgent Spy Software](https://www.spytech-web.com/spyagent.shtml)
 
 #### 3.3 User System Monitoring and Surveillance using Spyrix
 Spyrix facilitates covert remote monitoring of user activities in real-time. It provides concealed surveillance via a secure web account, logging keystrokes with a keylogger, monitoring various platforms such as Facebook, WhatsApp, Skype, Email, etc. It also offers functionality of capturing screenshots, live viewing of screen and webcam feeds, continuous recording of screen and webcam activity.
@@ -399,6 +402,7 @@ Covert_TCP manipulates TCP/IP headers to bypass firewalls and IDS/IPS.
   - `sudo ./covert_tcp -dest 192.168.18.144 -source 192.168.18.95 -source_port 8888 -dest_port 9999 -server -file /home/user/msg1.txt`
 4. On sender:
   - `sudo ./covert_tcp -dest 192.168.18.144 -source 192.168.18.95 -source_port 9999 -dest_port 8888 -file /home/kali/msg.txt`
+
 **Result**: Hidden data transmission over TCP headers.
 
 ---
