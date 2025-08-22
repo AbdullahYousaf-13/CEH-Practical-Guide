@@ -1,4 +1,16 @@
 # Module 6
 
 ## System Hacking
+The ethical hacking phase where testers exploit vulnerabilities to obtain unauthorized entry into systems, demonstrating potential real-world attack paths.
 
+**Objective**: Simulate how an attacker would exploit vulnerabilities to demonstrate risk.
+
+**Approach**: Done only in lab environments or with explicit permission.
+
+**Steps involved**:
+- Exploitation of known vulnerabilities (using tools like Metasploit).
+- Password attacks (brute-force, dictionary, credential stuffing).
+- Exploiting misconfigurations (weak services, unpatched systems).
+- Social engineering (phishing, malicious payloads).
+
+### 1. Perform Active Online Attack to Crack the System’s Password using Responder
