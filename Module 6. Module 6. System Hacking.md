@@ -407,3 +407,108 @@ Covert_TCP manipulates TCP/IP headers to bypass firewalls and IDS/IPS.
 
 ---
 
+### 4. Clear Logs to Hide the Evidence of Compromise
+To remain undetected, intruders erase all evidence of security compromise from the system.
+
+#### 4.1 Clear Windows Machine Logs using Various Utilities
+The system log file contains events that are logged by OS components. These may include device changes, drivers, system changes, operations, and other events.
+
+Utilities to clear logs include `Clear_Event_Viewer_Logs.bat`, `wevtutil`, and `cipher`.
+
+**Clear_Event_Viewer_Logs.bat**  
+Run as administrator. It deletes security, system, and application logs on the target system.
+
+#### wevtutil
+- `el | enum-logs` → lists log names  
+- `wevtutil cl [log_name]` → clears a specific log (e.g., system, application, security)
+
+#### Cipher.exe
+- `cipher /w:[Drive or Folder or File Location]`
+- Overwrites deleted files with 0s, 255s, and random numbers  
+- Prevents recovery of deleted data  
+- Useful to erase backup files created during encryption  
+
+#### 4.2 Clear Linux Machine Logs using the BASH Shell
+BASH stores history in `.bash_history`. Investigators can use this to track intrusions.
+
+- Disable history saving:
+  - `export HISTSIZE=0`
+- Clear history:
+  - `history -c`
+- Delete current shell history:
+  - `history -w`
+- Shred history file:
+  - `shred ~/.bash_history`
+- Combine commands:
+  - `shred ~/.bash_history && cat /dev/null > .bash_history && history -c && exit`
+
+#### 4.3 View, Edit and Clear Audit Policies using Auditpol
+`auditpol.exe` modifies audit security settings.
+
+- View all audit policies:
+  - `auditpol /get /category:*`
+- Set auditing:
+  - `auditpol /set /category:"system","account logon" /success:enable /failure:enable`
+- Clear all audit policies:
+  - `auditpol /clear /y`
+
+#### 4.4 Clear Windows Logs using Different Utilities
+
+**Bat Script**  
+- Download script and run as administrator
+[Clear All Event Logs in Event Viewer in Windows](https://www.tenforums.com/tutorials/16588-clear-all-event-logs-event-viewer-windows.html)
+
+**wevtutil el**  
+- List logs:
+  - `wevtutil el`
+- Clear a single log:
+  - `wevtutil cl system`
+- Clear all logs:
+  - `for /F "tokens=*" %1 in ('wevtutil.exe el') DO wevtutil.exe cl "%1"`
+ 
+**Cipher**  
+- Overwrite deleted files:
+  - `cipher /w:c:`
+ 
+#### 3.5 Clear Linux Logs using Bash Shell
+
+- Disable history:
+  - `export HISTSIZE=0`
+- Clear history:
+  - `history -c`
+- Clear current shell history:
+  - `history -w`
+- Shred history file:
+  - `shred ~/.bash_history`
+- View history file:
+  - `more ~/.bash_history`
+- Shred and clear:
+  - `shred ~/.bash_history && cat /dev/null>.bash_history && history -c && exit`
+
+#### 4.6 Hiding Artifacts in Windows and Linux
+
+**Windows**
+- Create directory:
+  - `mkdir test`
+- Hide folder:
+  - `attrib +h +r +s test`
+- Unhide folder:
+  - `attrib -s -h -r test`
+- Hide user accounts:
+  - `net user test /add`
+  - `net user test /active:yes`
+  - `net user test /active:no`
+
+**Linux**
+Create hidden file (prefix with `.`).  
+
+- View hidden files:
+  - `ls -la`
+
+#### 4.7 Clear Windows Logs using CCleaner
+Useful for clearing logs, temporary files, and other artifacts.
+
+[Download CCleaner | Clean, optimize & tune up your PC, free!](https://www.ccleaner.com/ccleaner/download)
+
+---
+
