@@ -219,11 +219,11 @@ IDSs and firewalls are efficient security mechanisms; however, they still have s
 
 ---
 
-### 4.2 Colasoft packet builder to avoid AV
+#### 4.2 Colasoft packet builder to avoid AV
 
 [Packet Builder for Network Engineer - Colasoft](https://www.colasoft.com/packet_builder/)
 
-### 4.3 Custom packet in Hping3
+#### 4.3 Custom packet in Hping3
 
 - `hping3 --udp --rand-source --data 500 192.168.18.110`
   - `--data` specifies the packet body size
@@ -286,7 +286,7 @@ Type `service` or `db-services` to see running services.
 ### 6. Perform Network Scanning using AI
 Network scanning using AI enhances cybersecurity by automating the detection of vulnerabilities and threats.
 
-### 6.1  Scan a Target using ShellGPT
+#### 6.1  Scan a Target using ShellGPT
 After incorporating the ShellGPT API in Parrot Security Machine, in the terminal window run
 -  `sgpt --chat scan --shell "Use hping3 to perform ICMP scanning on the target IP address 10.10.1.11 and stop after 10 iterations"`
 
