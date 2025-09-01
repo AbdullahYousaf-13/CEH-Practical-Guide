@@ -74,7 +74,7 @@ ARP poisoning redirects traffic between two machines through the attacker.
 Now poison the other machine
 - `arpspoof -i eth0 -t 192.168.18.14 192.168.18.1`
 
-### 1.4 Man-in-the-Middle Attack using Cain & Abel
+#### 1.4 Man-in-the-Middle Attack using Cain & Abel
 Cain & Abel enables ARP poisoning and traffic interception to perform MITM attacks on a local network.    
 <img width="580" height="233" alt="image" src="https://github.com/user-attachments/assets/6001ee23-47de-47ae-8054-aa558e8212a6" />
 <img width="651" height="456" alt="image" src="https://github.com/user-attachments/assets/73e84e38-304f-4216-acdd-f5b0ed2a4670" />
