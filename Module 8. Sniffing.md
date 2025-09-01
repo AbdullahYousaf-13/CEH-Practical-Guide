@@ -34,14 +34,14 @@ Ethical hackers and penetration testers use sniffing to:
 - Audit traffic for weaknesses in protocols or services.  
 - Secure systems by applying encryption, segmentation, and monitoring.
 
-### Lab Objectives
+**Lab Objectives**
 The labs in this module provide practical experience with packet sniffing. Key objectives:
 - **Sniff the network**: Capture real-time traffic.  
 - **Analyze packets**: Detect potential attacks and anomalies.  
 - **Troubleshoot performance**: Identify bottlenecks and misconfigurations.  
 - **Secure the network**: Implement encryption (SSL/TLS, SSH, VPN), IDS/IPS, and proper configurations.
 
-### References
+**References**
 - [Bettercap Over Wi-Fi – Sniffing HTTPS with SSLSniff](https://charlesreid1.com/wiki/MITM_Labs/Bettercap_Over_Wifi#Sniffing_HTTPS_with_SSLSniff)
 
 ---
