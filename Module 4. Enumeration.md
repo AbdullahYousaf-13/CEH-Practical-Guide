@@ -3,20 +3,20 @@
 ## Enumeration
 Enumeration is the process of extracting usernames, machine names, network resources, shares, and services from a system or network.
 
-### Objective
+**Objective**
 Actively extract detailed information about the target network to identify vulnerabilities and weak points for further testing.
 
-### Key Information to Gather
+**Key Information to Gather**
 - **Hosts:** Machine names, OS details, services, and ports.
 - **Users & Groups:** Usernames, group memberships.
 - **Network Resources:** Shares, policies, routing tables.
 - **Configurations:** SNMP data, FQDN details, audit settings.
 
-### Critical Legal Warning
+**Critical Legal Warning**
 - Enumeration is an active intrusion technique.** It often violates security policies and laws.
 - **Explicit, written authorization** is mandatory before proceeding.
 
-## Purpose
+**Purpose**
 The extracted data is used to identify vulnerabilities and plan credential-based attacks, mimicking a real attacker's methodology.
 
 ---
@@ -45,11 +45,11 @@ NetBIOS enumeration targets the NetBIOS Name Service (UDP/137) to extract hostna
 - `nmap --script broadcast-netbios-master-browser` → Enumerate master browser info
 - Pair with SMB scripts (`smb-os-discovery`) when 445 is open
 
-#### Security Risks
+**Security Risks**
 - Discloses usernames, hostnames, domains, and shares for credential spraying and lateral movement
 - Assists attacker in building accurate network maps
 
-#### Countermeasures
+**Countermeasures**
 - Disable NetBIOS over TCP/IP where not required
 - Block/limit UDP 137 at segment boundaries; restrict SMB access
 - Enforce least-privilege on shares; prefer DNS over NBNS; monitor NBNS broadcasts
@@ -89,12 +89,12 @@ SNMP (Simple Network Management Protocol) communicates on UDP ports 161 (request
 - **SolarWinds SNMP Enumerator**: GUI-based enumeration  
 - Useful for discovering misconfigured or open SNMP services
 
-#### Security Risks
+**Security Risks**
 - Default community strings like “public/private” often unchanged.  
 - Information disclosure: usernames, processes, routing tables, network services.  
 - Provides attackers with reconnaissance for privilege escalation and lateral movement.
 
-#### Countermeasures
+**Countermeasures**
 - Change default SNMP community strings to strong values.  
 - Restrict SNMP access to trusted IPs only.  
 - Disable SNMP if not required, or use SNMPv3 (with encryption & authentication).  
@@ -203,7 +203,7 @@ Execute zone transfer:
   - -d: target domain
   - -z: DNSSEC Zone walk
 
-5.3 DNS Enumeration using Nmap
+#### 5.3 DNS Enumeration using Nmap
 
 **DNS service discovery**
 - `nmap --script=broadcast-dns-service-discovery zonetransfer.me`
@@ -240,18 +240,13 @@ The process of extracting users, shares, services, and system information from R
 #### 7.1 SMB and RPC (port 111) Enumeration with NetScanTools
 
 **Windows tool**
-
-[NetScanTools® Pro Edition Product Information](https://www.netscantools.com/nstpromain.html)
-
+[NetScanTools® Pro Edition Product Information](https://www.netscantools.com/nstpromain.html)    
 <img width="430" height="341" alt="image" src="https://github.com/user-attachments/assets/db5f8069-4988-4788-ad69-309dd5f7b75d" />
-
 <img width="661" height="318" alt="image" src="https://github.com/user-attachments/assets/65d902f6-7b6a-4aa1-89a2-1cac4c1ee9bb" />
 
 #### 7.2 Perform SMB, FTP and RPC Enumeration with Nmap
-
 - `nmap -T5 -A 192.168.18.110`
 - `nmap -T5 -p 21 -A 192.168.18.110`
-
 > SMB enumeration scripts are also available in Metasploit.
 
 ---
@@ -264,6 +259,7 @@ Global Network Inventory is used as an audit scanner in zero deployment and agen
 
 [Global Network Inventory](https://magnetosoft.com/product-global-network-inventory/Logo)
 
+**Steps**:
 1. After installation, open the tool. The Global Network Inventory GUI appears. Click Close on the Tip of the Day pop-up.
 2. The New Audit Wizard window appears; click Next.
 3. Under the Audit Scan Mode section, click the Single address scan radio button, and then click Next.
