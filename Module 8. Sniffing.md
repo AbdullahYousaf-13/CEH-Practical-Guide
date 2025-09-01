@@ -51,7 +51,7 @@ Active sniffing involves injecting ARP traffic into a LAN to capture traffic on 
 
 #### 1.1 Perform MAC Flooding using macof
 MAC flooding forces a switch to act like a hub, allowing attackers to sniff traffic.
-- `sudo macof -i ens33 -n 10`
+- `sudo macof -i eth0 -n 10`
   - `-i` interface
   - `-n` number of packets to send
 - targeting an  IP address
