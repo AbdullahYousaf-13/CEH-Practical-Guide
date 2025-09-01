@@ -55,7 +55,7 @@ MAC flooding forces a switch to act like a hub, allowing attackers to sniff traf
   - `-i` interface
   - `-n` number of packets to send
 - targeting an  IP address
-  - `sudo macof -i ens33 -d 192.168.18.1`
+  - `sudo macof -i eth0 -d 192.168.18.1`
  
 #### 1.2 Perform a DHCP Starvation Attack using Yersinia
 DHCP starvation floods a server with requests, exhausting available IPs and causing a DoS.    
