@@ -343,13 +343,13 @@ Extract hidden message:
 
 #### 3.7 Image Steganography using OpenStego and Stegonline
 
-##### OpenStego
+**OpenStego**
 Select message file, cover file, and click **hide** to embed data. Extract similarly.
 
-##### Stegonline
+**Stegonline**
 Upload file, configure settings, and embed/extract hidden data.
 
-#### 8. Maintain persistence abusing boot or Logon autostart
+#### 3.8 Maintain persistence abusing boot or Logon autostart
 
 - After gaining admin meterpreter, change directory:
   - `cd "C:\ProgramData\Start Menu\Programs\StartUp`
@@ -360,7 +360,7 @@ Upload file, configure settings, and embed/extract hidden data.
 - [Steghide](https://www.kali.org/tools/steghide/)
 - [QuickCrypto](http://quickcrypto.com/free-steganography-software.html)
 
-#### 9. Maintain Domain Persistence exploiting Active Directory Objects
+#### 3.9 Maintain Domain Persistence exploiting Active Directory Objects
 AdminSDHolder container protects AD accounts/groups. Attackers can add user ACL to gain domain admin rights.
 
 **Steps**:
@@ -375,7 +375,7 @@ AdminSDHolder container protects AD accounts/groups. Attackers can add user ACL 
 4. Verify:
   - `Get-ObjectAcl -SamAccountName "Martin" -ResolveGUIDs`
 
-#### 10. Priv Esc with WMI and maintain persistence
+#### 3.10 Priv Esc with WMI and maintain persistence
 WMI event subscriptions can trigger code execution. Attackers use scripts for persistence.
 
 **Steps**:
@@ -387,7 +387,7 @@ WMI event subscriptions can trigger code execution. Attackers use scripts for pe
   - `Import-Module ./WMI-Persistence.ps1`
   - `install-Persistence -Trigger Startup -Payload "C:\users\administrators\downloads\exploit.exe"`
 
-#### 11. Covert channels using covert_TCP
+#### 3.11 Covert channels using covert_TCP
 Covert_TCP manipulates TCP/IP headers to bypass firewalls and IDS/IPS.
 
 **Steps**:
