@@ -7,16 +7,16 @@
 ---
 
 ## Important Links:
-- **YouTube Playlist:**
+- **YouTube Playlist:**    
   https://www.youtube.com/watch?v=yFC8pb2TPdc&list=PLIhvC56v63IIJZRa3lzK6IeBQOH_VFjUQ&index=2&ab_channel=NetworkChuck
 
-- **Recommended Course:**
+- **Recommended Course:**    
   https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
 
-- **Certified Ethical Hacker (CEHv12) Practical hands on Labs**
+- **Certified Ethical Hacker (CEHv12) Practical hands on Labs**    
   https://www.udemy.com/course/ceh-practical/?referralCode=289CF01CF51246BCAD6C
 
-- **Nmap Cheet Sheet:**
+- **Nmap Cheet Sheet:**    
   https://www.stationx.net/nmap-cheat-sheet/
   
 ---
