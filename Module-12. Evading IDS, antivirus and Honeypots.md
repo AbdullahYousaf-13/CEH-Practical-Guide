@@ -26,7 +26,7 @@ Cowrie serves as an SSH and Telnet honeypot, capable of capturing brute-force at
 ### 2. Evade Firewall using Evasion Techniques
 <img width="428" height="575" alt="image" src="https://github.com/user-attachments/assets/a333df1e-0c81-4fb8-8f58-7872bb5c2bac" />
 
-### 2.1 Bypass firewall using Nmap
+#### 2.1 Bypass firewall using Nmap
 Add a rule in windows firewall to block all traffic from the attacking machine.
 In Ping sweep, the host will appear as online
 - `nmap -sP 192.168.18.0/24`
