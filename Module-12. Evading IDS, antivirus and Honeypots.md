@@ -29,9 +29,9 @@ Cowrie serves as an SSH and Telnet honeypot, capable of capturing brute-force at
 #### 2.1 Bypass firewall using Nmap
 Add a rule in windows firewall to block all traffic from the attacking machine.
 In Ping sweep, the host will appear as online
-- `nmap -sP 192.168.18.0/24`
+- `nmap -sP 192.168.18.0/24`  only discover which hosts are up
 Zombie scan can bypass the firewall rule
-- `nmap -sI 192.168.18.2 192.168.18.11`  192.168.18.11 is the target
+- `nmap -sI 192.168.18.2 192.168.18.11`  .2 is the zombie, .11 is the target
 
 #### 2.2 Bypass firewall rules using HTTP/ FTP Tunneling 
 HTTPort is a tool that bypasses restrictive HTTP proxies. It tunnels blocked traffic (like email or FTP) through an allowed HTTP connection.
