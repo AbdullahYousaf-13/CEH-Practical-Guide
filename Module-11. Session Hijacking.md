@@ -104,7 +104,7 @@ Caido assists security professionals and enthusiasts in efficiently auditing web
 36. The victim has navigated to www.moviescope.com, but now sees www.goodshopping.com; while the address bar displays www. moviescope.com, the window displays www.goodshopping.com.
 37. Now, we shall change the proxy settings back to the default settings. To do so, in the Firefox browser, select Settings from the context menu. On the Settings page, search for proxy and open it. Connection Settings page appears, check No Proxy radio button and click OK.
 
-#### 4. Intercept HTTP traffic using Hetty
+#### 1.4 Intercept HTTP traffic using Hetty
 Hetty is an HTTP toolkit for security research. It aims to become an open-source alternative to commercial software such as Burp Suite Pro, with powerful features tailored to the needs of the InfoSec and bug bounty communities. Hetty can be used to perform Machine-in-the-middle (MITM) attack, manually create/edit requests, and replay proxied requests for HTTP clients and further intercept requests and responses for manual review.
 [Hetty | Hetty](https://hetty.xyz/)
 
@@ -148,7 +148,7 @@ Hetty is an HTTP toolkit for security research. It aims to become an open-source
 ### 2. Detect Session Hijacking
 Fortunately, there are various tools available that can help you to detect session hijacking attacks such as packet sniffers, IDSs, and SIEMs.
 
-#### 1. Detect Session  Hijacking using Wireshark
+#### 2.1 Detect Session  Hijacking using Wireshark
 **Launch MITM attack**    
 1. Run `bettercap -iface eth0` to set the network interface.
   - `-iface`: specifies the interface to bind to (here, eth0).
