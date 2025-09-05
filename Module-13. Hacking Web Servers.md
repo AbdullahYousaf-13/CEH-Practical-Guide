@@ -23,11 +23,22 @@ An ethical hacker or penetration tester must perform footprinting to detect the 
 #### 1.1 Information gathering using Ghost Eye
 [GitHub - BullsEye0/ghost_eye](https://github.com/BullsEye0/ghost_eye)    
 Ghost Eye is an Information Gathering Tool I made in python 3. To run Ghost Eye, it only needs a domain or ip. Ghost Eye can work with any Linux distros if they support Python 3.
-- `git clone https://github.com/BullsEye0/ghost_eye.git`
-- `cd ghost_eye`
-- `pip3 install -r requirements.txt`
-Now Launch it
-- `python3 ghost-eye.py`
+
+**Create a Virtual Environment (Recommended)**
+- Install venv if not installed
+  - `sudo apt install python3-venv -y`
+- Create virtual environment inside ghost_eye
+  - `cd ~/ghost_eye`
+  - `python3 -m venv venv`
+- Activate it
+  - `source venv/bin/activate`
+-  Now install requirements
+  -  `pip install -r requirements.txt`
+- Downgrade urllib3
+  - `pip install "urllib3<2"`
+- Now Launch it
+  - `python3 ghost_eye.py`
+
 We can use the tool for WHOIS lookup, DNS etc and also scan for clickjacking vulnerability
 
 #### 1.2 Perform Web Reconnaisance using skipfish
