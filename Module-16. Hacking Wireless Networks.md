@@ -27,13 +27,14 @@ To intercept data or use the network as a launch point for further attacks.
 Wireshark is a network analysis tool that captures and inspects network traffic. Using the Npcap library, it can analyze wireless (Wi-Fi) traffic in monitor mode, capturing data, management, and control frames to examine details like protocols, encryption, and MAC addresses.
 
 **Steps**:
-- You can open a captured file in wireshark to analyze it.
-<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/69320d1a-ee8d-4149-8429-fbdf61e7e5f1" />
+- You can open a captured file in wireshark to analyze it.    
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/69320d1a-ee8d-4149-8429-fbdf61e7e5f1" />    
+
 - The 8.cap file opens in Wireshark window showing you the details of the packet for analysis. Here you can see the wireless packets captured which were otherwise masked to look like ethernet traffic.
-- Here 802.11 protocol indicates wireless packets.
-- You can access the saved packet capture file anytime, and by issuing packet filtering commands in the Filter field, you can narrow down the packet search in an attempt to find packets containing sensible information.
-- In real time, attackers enforce packet capture and packet filtering techniques to capture packets containing passwords (only for websites implemented on HTTP channel), perform attacks such as session hijacking, and so on.
-<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/594f3854-86c5-4418-9a15-7b7331889cbd" />
+- Here 802.11 protocol indicates wireless packets.    
+- You can access the saved packet capture file anytime, and by issuing packet filtering commands in the Filter field, you can narrow down the packet search in an attempt to find packets containing sensible information.    
+- In real time, attackers enforce packet capture and packet filtering techniques to capture packets containing passwords (only for websites implemented on HTTP channel), perform attacks such as session hijacking, and so on.    
+<img width="1024" height="768" alt="image" src="https://github.com/user-attachments/assets/594f3854-86c5-4418-9a15-7b7331889cbd" />    
 
 #### 2.2 Find wifi networks and sniff traffic with wash and wireshark
 **Steps**:
