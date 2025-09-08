@@ -110,7 +110,9 @@ Exploiting parameter tampering with XSS involves modifying URL or form parameter
   - `wpscan --api-token kAp93ZFanbv7N35slZDR6IHuWqiKpuws2aM3grEMsbY --url https://cavementech.com/ --enumerate u --random-user-agent`
 - WPSCAN can be used to enumerate users, themes, plugins etc
   - `wpscan --url http://cmnatics.playground/ --enumerate u,p,t,vp --api-token kAp93ZFanbv7N35slZDR6IHuWqiKpuws2aM3grEMsbY`
+
 <img width="724" height="205" alt="image" src="https://github.com/user-attachments/assets/d19a57cc-da78-466c-9e81-3f6f3aa1eaef" />
+
 - Now launch the Metasploit with database
   - `service postgresql start`
   - `msconsole`
