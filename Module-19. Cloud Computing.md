@@ -64,7 +64,7 @@ It will ask for the following details:
 - Default region name
 - Default output format
 
-#### 4. Perform Privilege Escalation to Gain Higher Privileges
+### 4. Perform Privilege Escalation to Gain Higher Privileges
 In the cloud platform, owing to mistakes in the access allocation system such as coding errors and design flaws, a customer, a third party, or an employee can obtain higher access rights.
 
 #### 4.1 Escalata IAM privilege by exploiting misconfigured user policy
@@ -77,7 +77,7 @@ Commands to obtain complete information about the AWS environment:
 - Group policies: `aws iam list-group-policies`
 - Create user: `aws iam create-user`
 
-#### 5. Perform Vulnerability Assessment on Docker Images
+### 5. Perform Vulnerability Assessment on Docker Images
 By leveraging tools like Trivy, you can analyze Docker images, identifying and exploiting vulnerabilities
 
 #### 5.1 Vulnerability Assessment on Docker Images using Trivy
