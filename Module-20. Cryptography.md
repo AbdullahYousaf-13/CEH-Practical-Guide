@@ -5,3 +5,7 @@ Cryptography and cryptographic (“crypto”) systems help in securing data from
 
 As an ethical hacker or penetration tester, you should suggest to your client proper encryption techniques to protect data, both in storage and during transmission. The labs in this module demonstrate the use of encryption to protect information systems in organizations.
 
+### 1. Encrypt the Information using Various Cryptography Tools
+
+#### 1.1 Calculate hash using hashcalc
+[SlavaSoft Downloads](https://www.slavasoft.com/download.htm)
